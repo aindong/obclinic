@@ -12,17 +12,11 @@
 
     <!-- BEGIN STYLESHEETS -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/bootstrap02dc.css') }}
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/materialadmin0768.css') }}
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/font-awesome.min445a.css') }}
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/material-design-iconic-font.min3cd8.css') }}
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/rickshaw/rickshawd56b.css') }}
-
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/morris/morris.core5e0a.css') }}
     <style>
         .hide {
