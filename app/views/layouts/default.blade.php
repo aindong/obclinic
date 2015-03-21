@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ $pageTitle or 'OBClinic - Dashboard'}}</title>
+    <title>OBClinic - {{ $pageTitle or 'Dashboard'}}</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
