@@ -18,6 +18,10 @@
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/material-design-iconic-font.min3cd8.css') }}
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/rickshaw/rickshawd56b.css') }}
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/morris/morris.core5e0a.css') }}
+    <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/jquery.dataTablesdee9.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/extensions/dataTables.colVis941e.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/extensions/dataTables.tableTools4029.css" />
+
     <style>
         .hide {
             display: none;
@@ -92,6 +96,7 @@
 <script src="/assets/js/modules/materialadmin/libs/bootstrap/bootstrap.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/spin.js/spin.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/autosize/jquery.autosize.min.js"></script>
+<script src="/assets/js/modules/materialadmin/core/cache/9782537cea5b6dc42cb13bd7821cceca.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/moment/moment.min.js"></script>
 <script src="/assets/js/modules/materialadmin/core/cache/ec2c8835c9f9fbb7b8cd36464b491e73.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/jquery-knob/jquery.knob.min.js"></script>
