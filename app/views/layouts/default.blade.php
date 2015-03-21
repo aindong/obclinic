@@ -32,18 +32,12 @@
     @yield('page-styles')
     <!-- END STYLESHEETS -->
 
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script type="text/javascript" src="http://www.codecovers.eu/assets/js/modules/materialadmin/libs/utils/html5shiv.js?1422823601"></script>
     <script type="text/javascript" src="http://www.codecovers.eu/assets/js/modules/materialadmin/libs/utils/respond.min.js?1422823601"></script>
     <![endif]-->
 </head>
-
-
-
-
-
 
 <body class="menubar-hoverable header-fixed ">
 <!-- BEGIN HEADER-->
@@ -98,9 +92,7 @@
 </div><!--end #base-->
 <!-- END BASE -->
 
-
 <!-- BEGIN JAVASCRIPT -->
-
 <script src="/assets/js/modules/materialadmin/libs/jquery/jquery-1.11.2.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/bootstrap/bootstrap.min.js"></script>
@@ -115,10 +107,9 @@
 {{--<script src="/assets/js/modules/materialadmin/libs/rickshaw/rickshaw.min.js"></script>--}}
 <script src="/assets/js/modules/materialadmin/core/cache/63d0445130d69b2868a8d28c93309746.js"></script>
 <script src="/assets/js/modules/materialadmin/core/demo/Demo.js"></script>
-
 <!-- END JAVASCRIPT -->
 
-
+@yield('page-scripts')
 
 </body>
 </html>
