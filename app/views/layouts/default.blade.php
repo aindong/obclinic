@@ -21,6 +21,7 @@
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/jquery.dataTablesdee9.css" />
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/extensions/dataTables.colVis941e.css" />
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/extensions/dataTables.tableTools4029.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/select2/select201ef.css" />
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/toastr/toastrf6d7.css') }}
     <style>
         .hide {
@@ -106,6 +107,7 @@
 <script src="/assets/js/modules/materialadmin/core/cache/43ef607ee92d94826432d1d6f09372e1.js"></script>
 {{--<script src="/assets/js/modules/materialadmin/libs/rickshaw/rickshaw.min.js"></script>--}}
 <script src="/assets/js/modules/materialadmin/core/cache/63d0445130d69b2868a8d28c93309746.js"></script>
+<script src="/assets/js/modules/materialadmin/libs/select2/select2.min.js"></script>
 <script src="/assets/js/modules/materialadmin/core/demo/Demo.js"></script>
 <!-- END JAVASCRIPT -->
 

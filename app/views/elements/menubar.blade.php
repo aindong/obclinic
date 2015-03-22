@@ -20,7 +20,7 @@
         <ul id="main-menu" class="gui-controls">
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="dashboard.html" class="active">
+                <a href="/" class="active">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Dashboard</span>
                 </a>
@@ -49,7 +49,7 @@
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="#" ><span class="title">List</span></a></li>
+                    <li><a href="/patients" ><span class="title">List</span></a></li>
                     <li><a href="#" ><span class="title">Create</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->
