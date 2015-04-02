@@ -1,0 +1,6 @@
+<?php
+namespace Aindong\Features\{{plural}}\Models;
+
+class {{singular}} extends \Eloquent {
+
+}

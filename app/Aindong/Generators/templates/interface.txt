@@ -1,0 +1,8 @@
+<?php
+namespace Aindong\Features\{{plural}}\Repositories;
+
+use Aindong\Repositories\EloquentInterface;
+
+interface {{singular}}Interface extends EloquentInterface {
+
+}

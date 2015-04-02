@@ -1,0 +1,12 @@
+<?php
+namespace Aindong\Features\{{plural}}\Repositories;
+
+use Aindong\Repositories\EloquentRepository;
+use Illuminate\Database\Eloquent\Model;
+
+class {{singular}}Repository extends EloquentRepository {
+    public function __construct(Model $model)
+    {
+        parent::__construct($model);
+    }
+}
