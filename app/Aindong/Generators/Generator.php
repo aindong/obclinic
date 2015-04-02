@@ -31,7 +31,7 @@ abstract class Generator {
 
     /**
      * Make
-     * Make the file
+     * Make/Generate the file
      *
      * @param $path
      * @param $template
