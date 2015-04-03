@@ -109,6 +109,8 @@
 <script src="/assets/js/modules/materialadmin/core/cache/63d0445130d69b2868a8d28c93309746.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/select2/select2.min.js"></script>
 <script src="/assets/js/modules/materialadmin/core/demo/Demo.js"></script>
+<script src="/packages/require/require.js"></script>
+<script src="/assets/js/config.js"></script>
 <!-- END JAVASCRIPT -->
 
 @yield('page-scripts')

@@ -35,7 +35,7 @@
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="#" ><span class="title">List</span></a></li>
+                    <li><a href="/appointments" ><span class="title">List</span></a></li>
                     <li><a href="#" ><span class="title">Create</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->
