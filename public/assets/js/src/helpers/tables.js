@@ -11,39 +11,28 @@ define(function() {
     // INIT
     // =========================================================================
 
-    p.initialize = function($el) {
-        this._initDataTables($el);
+    p.initialize = function($el, $columns) {
+        this._initDataTables($el, $columns);
     };
 
     // =========================================================================
     // DATATABLES
     // =========================================================================
 
-    p._initDataTables = function($el) {
+    p._initDataTables = function($el, $columns) {
         if (!$.isFunction($.fn.dataTable)) {
             return;
         }
 
         // Init the demo DataTables
-        this._createDataTable($el);
+        this._createDataTable($el, $columns);
     };
 
-    p._createDataTable = function($el) {
+    p._createDataTable = function($el, $columns) {
         var table = $el.DataTable({
             "dom": 'T<"clear">lfrtip',
             "ajax": $el.data('source'),
-            "columns": [
-                {
-                    "class": 'details-control',
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": ''
-                },
-                {"data": "name"},
-                {"data": "position"},
-                {"data": "office"},
-                {"data": "salary"}
-            ],
+            "columns": $columns,
             "tableTools": {
                 "sSwfPath": $el.data('swftools')
             },

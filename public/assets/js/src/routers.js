@@ -1,8 +1,9 @@
 define(['underscore',
     'backbone',
     'marionette',
-    'views/queues/list'],
-    function(_, Backbone, Marionette, QueueListView) {
+    'views/queues/list',
+    'views/patients/list'],
+    function(_, Backbone, Marionette, QueueListView, PatientListView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -11,6 +12,7 @@ define(['underscore',
             '': 'index',
             '/users': 'showUsers',
             '/appointments': 'showAppointments',
+            'patients': 'showPatients',
 
             // Default
             '*action': 'showQueues'
@@ -28,6 +30,11 @@ define(['underscore',
         },
         showAppointments: function() {
             alert('appointments');
+        },
+        showPatients: function() {
+            var patientListView = new PatientListView;
+            patientListView.render();
+            patientListView.triggerMethod('render');
         }
 
     });

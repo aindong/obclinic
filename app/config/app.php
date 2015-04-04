@@ -126,6 +126,7 @@ return array(
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
         'Aindong\Providers\AindongServiceProvider',
+        'Aindong\Features\Patients\Providers\PatientsServiceProvider'
 	),
 
 	/*

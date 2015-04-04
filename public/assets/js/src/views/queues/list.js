@@ -12,7 +12,20 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
         },
         onRender: function() {
             console.log(Tables);
-            Tables.initialize($('#datatable2'));
+            var $columns = [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                {"data": "name"},
+                {"data": "position"},
+                {"data": "office"},
+                {"data": "salary"}
+            ];
+
+            Tables.initialize($('#datatable2'), $columns);
         }
     });
 

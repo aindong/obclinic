@@ -93,6 +93,7 @@
 
 <!-- BEGIN JAVASCRIPT -->
 <script src="/assets/js/modules/materialadmin/libs/jquery/jquery-1.11.2.min.js"></script>
+<script src="/packages/handlebars-v3.0.0.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/bootstrap/bootstrap.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/spin.js/spin.min.js"></script>

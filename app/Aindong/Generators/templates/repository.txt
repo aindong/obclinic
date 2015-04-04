@@ -4,7 +4,7 @@ namespace Aindong\Features\{{plural}}\Repositories;
 use Aindong\Repositories\EloquentRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class {{singular}}Repository extends EloquentRepository {
+class {{singular}}Repository extends EloquentRepository implements {{singular}}Interface {
     public function __construct(Model $model)
     {
         parent::__construct($model);
