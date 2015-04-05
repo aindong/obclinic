@@ -21,8 +21,7 @@ class PatientsController extends \BaseController {
     public function index()
     {
         // Create the result
-        $result = ['status' => 'success',
-            'data' => $this->patient->paginate()];
+        $result = $this->patient->paginate();
 
         return \Response::json($result, 200);
     }

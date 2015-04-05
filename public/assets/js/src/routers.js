@@ -17,24 +17,28 @@ define(['underscore',
             // Default
             '*action': 'showQueues'
         },
+
         initialize: function() {
             Backbone.history.start({ pushState: true });
         },
+
         index: function() {
             var queueListView = new QueueListView;
             queueListView.render();
             queueListView.triggerMethod('render');
         },
+
         showUsers: function() {
 
         },
+
         showAppointments: function() {
             alert('appointments');
         },
+
         showPatients: function() {
             var patientListView = new PatientListView;
-            patientListView.render();
-            patientListView.triggerMethod('render');
+            patientListView.triggerMethod('before:render');
         }
 
     });

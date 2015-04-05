@@ -11,6 +11,7 @@ define(['backbone'], function (Backbone) {
             'email': 'ann@laurens.com',
             'picture': '../../../assets/img/modules/materialadmin/avatar9463a.jpg'
         }
+
     });
 
     return Patient;
