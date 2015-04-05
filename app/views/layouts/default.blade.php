@@ -23,6 +23,7 @@
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/DataTables/extensions/dataTables.tableTools4029.css" />
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/select2/select201ef.css" />
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/toastr/toastrf6d7.css') }}
+    {{ HTML::style('/assets/css/modules/materialadmin/css/theme-default/libs/dropzone/dropzone-theme23ba.css') }}
     <style>
         .hide {
             display: none;
@@ -105,6 +106,7 @@
 <script src="/assets/js/modules/materialadmin/libs/sparkline/jquery.sparkline.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/toastr/toastr.js"></script>
+<script src="/assets/js/modules/materialadmin/libs/dropzone/dropzone.min.js"></script>
 <script src="/assets/js/modules/materialadmin/core/cache/43ef607ee92d94826432d1d6f09372e1.js"></script>
 {{--<script src="/assets/js/modules/materialadmin/libs/rickshaw/rickshaw.min.js"></script>--}}
 <script src="/assets/js/modules/materialadmin/core/cache/63d0445130d69b2868a8d28c93309746.js"></script>

@@ -7,4 +7,9 @@ class Patient extends \Eloquent {
     public $rules = [];
 
     protected $guarded = [];
+
+    public function picture()
+    {
+        return $this->morphTo('Media', 'imageable');
+    }
 }

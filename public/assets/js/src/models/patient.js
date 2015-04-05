@@ -9,7 +9,7 @@ define(['backbone'], function (Backbone) {
             'birthdate': '',
             'contactno': '567-890-1234',
             'email': 'ann@laurens.com',
-            'picture': '../../../assets/img/modules/materialadmin/avatar9463a.jpg'
+            'picture': 'avatar9463a.jpg'
         }
 
     });

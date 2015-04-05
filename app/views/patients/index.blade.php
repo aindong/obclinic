@@ -22,7 +22,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="formModalLabel">Create New Patient Record</h4>
                 </div>
-                <form class="form-horizontal" role="form" id="createForm" action="post" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" id="createForm" action="post">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -97,21 +97,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <label for="file" class="control-label">Picture</label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="file" name="file" id="file" class="form-control" placeholder="Picture">
-                            </div>
-                        </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
+
+
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

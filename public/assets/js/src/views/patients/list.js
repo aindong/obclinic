@@ -34,7 +34,6 @@ define(['marionette', 'models/patient', 'collections/patients', 'views/patients/
             },
 
             onRender: function() {
-
                 //console.log(this.collection.toJSON());
                 console.log('rendered');
             }
