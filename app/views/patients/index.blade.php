@@ -102,7 +102,7 @@
                                 <label for="picture" class="control-label">Picture</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" name="picture" id="picture" class="form-control" placeholder="Picture">
+                                <input type="file" name="picture" id="picture" class="form-control" placeholder="Picture">
                             </div>
                         </div>
 
