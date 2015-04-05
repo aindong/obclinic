@@ -99,10 +99,10 @@
 
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="picture" class="control-label">Picture</label>
+                                <label for="file" class="control-label">Picture</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="file" name="picture" id="picture" class="form-control" placeholder="Picture">
+                                <input type="file" name="file" id="file" class="form-control" placeholder="Picture">
                             </div>
                         </div>
 
