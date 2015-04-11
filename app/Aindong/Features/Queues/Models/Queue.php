@@ -8,6 +8,8 @@ class Queue extends \Eloquent {
     protected $table = 'queues';
     protected $fillable = ['arrival', 'patient_no', 'vitalsign_id', 'reservation_type'];
 
+    public $rules = [];
+
     public function scopeToday()
     {
         return Carbon::createFromTimestamp(strtotime($this->arrival))->isToday();
@@ -15,7 +17,8 @@ class Queue extends \Eloquent {
 
     public function patient()
     {
-        return $this->belongsTo('Patient', 'patient_no');
+        return $this->belongsTo('Aindong\Features\Patients\Models\Patient', 'patient_no', 'patient_no');
+
     }
 
 }

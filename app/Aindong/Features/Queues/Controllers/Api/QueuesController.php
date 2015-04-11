@@ -34,11 +34,11 @@ class QueuesController extends \BaseController {
         $result = [];
 
         foreach ($queues as $queue) {
-            $result[] = [
+            $result['data'][] = [
                 'queue_no'      => $queue->id,
                 'arrival'       => Carbon::createFromTimestamp(strtotime($queue->arrival))->format('M d, Y'),
                 'patient_id'    => $queue->patient_no,
-                'patient_name'  => $queue->patient()->firstname . ' ' . $queue->patient()->lastname,
+                'patient_name'  => $queue->patient->firstname . ' ' . $queue->patient->lastname,
                 'vitalsign'     => 'todo',
                 'type'          => $queue->reservation_type
             ];

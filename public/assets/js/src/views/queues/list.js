@@ -19,10 +19,12 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                     "data": null,
                     "defaultContent": ''
                 },
-                {"data": "name"},
-                {"data": "position"},
-                {"data": "office"},
-                {"data": "salary"}
+                {"data": "queue_no"},
+                {"data": "arrival"},
+                {"data": "patient_id"},
+                {"data": "patient_name"},
+                {"data": "vitalsign"},
+                {"data": "type"}
             ];
 
             Tables.initialize($('#datatable2'), $columns);

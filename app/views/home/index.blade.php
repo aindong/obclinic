@@ -17,14 +17,16 @@
                     </div><!--end .col -->
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table id="datatable2" class="table order-column hover" data-source="/assets/users.json" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
+                            <table id="datatable2" class="table order-column hover" data-source="/api/v1/queues" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Salary</th>
+                                    <th>Queue No</th>
+                                    <th>Arrival</th>
+                                    <th>Patient No</th>
+                                    <th>Patient Name</th>
+                                    <th>Vitalsign</th>
+                                    <th>Type</th>
                                 </tr>
                                 </thead>
                             </table>

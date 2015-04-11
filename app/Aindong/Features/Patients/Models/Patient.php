@@ -15,6 +15,6 @@ class Patient extends \Eloquent {
 
     public function queue()
     {
-        return $this->hasMany('Queue');
+        return $this->hasMany('Queue', 'patient_no');
     }
 }

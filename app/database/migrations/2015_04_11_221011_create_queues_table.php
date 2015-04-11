@@ -16,11 +16,11 @@ class CreateQueuesTable extends Migration {
             $table->increments('id');
             $table->timestamp('arrival');
             $table->string('patient_no', 20);
-            $table->integer('vitalsign_id')->unsigned();
+            $table->integer('vitalsign_id');
             $table->string('reservation_type');
             $table->timestamps();
 
-            $table->foreign('vitalsign_id')->references('id')->on('patients_vitalsigns');
+            $table->foreign('patient_no')->references('patient_no')->on('patients');
         });
 	}
 
