@@ -129,6 +129,7 @@ return array(
         'Aindong\Features\Patients\Providers\PatientsServiceProvider',
         'Aindong\Features\Medias\Providers\MediasServiceProvider',
         'Aindong\Features\PatientsVitalSigns\Providers\PatientsVitalSignsServiceProvider',
+        'Aindong\Features\Queues\Providers\QueuesServiceProvider'
 
 	),
 

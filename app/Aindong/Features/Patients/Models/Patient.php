@@ -12,4 +12,9 @@ class Patient extends \Eloquent {
     {
         return $this->morphTo('Media', 'imageable');
     }
+
+    public function queue()
+    {
+        return $this->hasMany('Queue');
+    }
 }
