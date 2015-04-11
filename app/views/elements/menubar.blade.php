@@ -27,6 +27,19 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN Patients -->
+            <li class="gui-folder">
+                <a>
+                    <div class="gui-icon"><i class="md md-view-agenda"></i></div>
+                    <span class="title">Maintenance</span>
+                </a>
+                <!--start submenu -->
+                <ul>
+                    <li><a href="/patients" ><span class="title">Allergies</span></a></li>
+                </ul><!--end /submenu -->
+            </li><!--end /menu-li -->
+            <!-- END Patients -->
+
             <!-- BEGIN Appointments -->
             <li class="gui-folder">
                 <a>
@@ -50,7 +63,6 @@
                 <!--start submenu -->
                 <ul>
                     <li><a href="/patients" ><span class="title">List</span></a></li>
-                    <li><a href="#" ><span class="title">Create</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->
             <!-- END Patients -->
