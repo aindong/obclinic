@@ -20,6 +20,6 @@ class MedicinesController extends \BaseController {
 
     public function index()
     {
-        return View::make('maintenance.medicines.index');
+        return \View::make('maintenance.medicines.index');
     }
 }

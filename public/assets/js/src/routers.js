@@ -3,8 +3,12 @@ define(['underscore',
     'marionette',
     'views/queues/list',
     'views/patients/list',
-    'views/maintenance/allergies/list'],
-    function(_, Backbone, Marionette, QueueListView, PatientListView, AlleryListView) {
+    'views/maintenance/allergies/list',
+    'views/maintenance/diseases/list',
+    'views/maintenance/medicines/list'
+    ],
+    function(_, Backbone, Marionette, QueueListView,
+             PatientListView, AllergyListView, DiseaseListView, MedicineListView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -46,9 +50,21 @@ define(['underscore',
         },
 
         showAllergies: function() {
-            var allergyView = new AlleryListView;
+            var allergyView = new AllergyListView;
             allergyView.render();
             allergyView.triggerMethod('render');
+        },
+
+        showDiseases: function() {
+            var diseaseView = new DiseaseListView;
+            diseaseView.render();
+            diseaseView.triggerMethod('render');
+        },
+
+        showMedicines: function() {
+            var medicineView = new MedicineListView;
+            medicineView.render();
+            medicineView.triggerMethod('render');
         }
 
     });

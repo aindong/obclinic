@@ -130,8 +130,10 @@ return array(
         'Aindong\Features\Medias\Providers\MediasServiceProvider',
         'Aindong\Features\PatientsVitalSigns\Providers\PatientsVitalSignsServiceProvider',
         'Aindong\Features\Queues\Providers\QueuesServiceProvider',
-        'Aindong\Features\Allergies\Providers\AllergiesServiceProvider'
-	),
+        'Aindong\Features\Allergies\Providers\AllergiesServiceProvider',
+        'Aindong\Features\Medicines\Providers\MedicinesServiceProvider',
+        'Aindong\Features\Diseases\Providers\DiseasesServiceProvider'
+    ),
 
 	/*
 	|--------------------------------------------------------------------------

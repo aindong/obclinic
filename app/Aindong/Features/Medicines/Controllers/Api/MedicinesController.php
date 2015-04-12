@@ -3,6 +3,7 @@
 namespace Aindong\Features\Medicines\Controllers\Api;
 
 use Aindong\Features\Medicines\Repositories\MedicineInterface;
+use Carbon\Carbon;
 
 class MedicinesController extends \BaseController {
 
@@ -20,6 +21,19 @@ class MedicinesController extends \BaseController {
 
     public function index()
     {
+        $medicines = $this->medicine->all();
 
+        $result = ['data' => []];
+
+        foreach ($medicines as $medicine) {
+            $result['data'][] = [
+                'id'    => $medicine->id,
+                'name'      => $medicine->name,
+                'created'   => Carbon::createFromTimestamp(strtotime($medicine->created_at))->format('M d, Y'),
+                'updated'   => Carbon::createFromTimestamp(strtotime($medicine->updated_at))->format('M d, Y')
+            ];
+        }
+
+        return \Response::json($result, 200);
     }
 }
