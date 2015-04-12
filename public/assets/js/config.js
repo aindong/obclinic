@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: 'assets/js/src',
+    baseUrl: '/assets/js/src',
     deps: ['main'],
     paths: {
         'underscore': '../../../packages/underscore/underscore',
