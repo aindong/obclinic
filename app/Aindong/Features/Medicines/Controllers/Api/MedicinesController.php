@@ -1,6 +1,6 @@
 <?php
 
-namespace Aindong\Features\Medicines\Controllers;
+namespace Aindong\Features\Medicines\Controllers\Api;
 
 use Aindong\Features\Medicines\Repositories\MedicineInterface;
 
@@ -20,6 +20,6 @@ class MedicinesController extends \BaseController {
 
     public function index()
     {
-        return View::make('maintenance.medicines.index');
+
     }
 }

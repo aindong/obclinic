@@ -1,6 +1,6 @@
 <?php
 
-namespace Aindong\Features\Diseases\Controllers;
+namespace Aindong\Features\Diseases\Controllers\Api;
 
 use Aindong\Features\Diseases\Repositories\DiseaseInterface;
 
@@ -20,6 +20,6 @@ class DiseasesController extends \BaseController {
 
     public function index()
     {
-        return View::make('maintenance.diseases.index');
+
     }
 }
