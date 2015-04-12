@@ -36,6 +36,8 @@
                 <!--start submenu -->
                 <ul>
                     <li><a href="/patients" ><span class="title">Allergies</span></a></li>
+                    <li><a href="/patients" ><span class="title">Diseases</span></a></li>
+                    <li><a href="/patients" ><span class="title">Medicines</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->
             <!-- END Patients -->

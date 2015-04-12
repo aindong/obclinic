@@ -31,7 +31,7 @@ class QueuesController extends \BaseController {
         $queues = $this->queue->getToday();
 
         // Create the result array
-        $result = [];
+        $result = ['data' => []];
 
         foreach ($queues as $queue) {
             $result['data'][] = [

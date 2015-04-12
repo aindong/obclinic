@@ -17,6 +17,6 @@ class QueueRepository extends EloquentRepository implements QueueInterface {
 
     public function getToday()
     {
-        return $this->model->today()->get();
+        return $this->model->with('patient')->today()->get();
     }
 }

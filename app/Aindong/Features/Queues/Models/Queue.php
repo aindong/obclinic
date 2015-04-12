@@ -10,9 +10,9 @@ class Queue extends \Eloquent {
 
     public $rules = [];
 
-    public function scopeToday()
+    public function scopeToday($query)
     {
-        return Carbon::createFromTimestamp(strtotime($this->arrival))->isToday();
+        return $query->where('arrival', '>=', Carbon::today()->format('Y-m-d'));
     }
 
     public function patient()
