@@ -13,7 +13,7 @@ class DiseasesTableSeeder extends Seeder {
     {
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             Disease::create([
                 'name'  => $faker->word
             ]);

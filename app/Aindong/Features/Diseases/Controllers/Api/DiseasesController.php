@@ -36,4 +36,20 @@ class DiseasesController extends \BaseController {
 
         return \Response::json($result, 200);
     }
+
+    public function store()
+    {
+        $data = \Input::all();
+
+        $disease = $this->disease->create($data);
+
+        $status = 'failed';
+        if ($disease['status'] != 'failed') {
+            $status = 'success';
+        }
+
+        $result = ['status' => $status, 'data' => $disease];
+
+        return \Response::json($result, 200);
+    }
 }

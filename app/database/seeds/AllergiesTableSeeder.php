@@ -13,7 +13,7 @@ class AllergiesTableSeeder extends Seeder {
     {
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             Allergy::create([
                 'type' => $faker->randomElement(['food', 'medicine', 'others']),
                 'name'  => $faker->word

@@ -9,4 +9,5 @@ class AllergyRepository extends EloquentRepository implements AllergyInterface {
     {
         parent::__construct($model);
     }
+    
 }

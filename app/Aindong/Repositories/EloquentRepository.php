@@ -8,7 +8,7 @@ use Validator;
 class EloquentRepository implements EloquentInterface {
 
     protected $model;
-    protected $errors = [];
+    public $errors = [];
 
     public function __construct(Model $model) {
         $this->model = $model;
@@ -40,6 +40,7 @@ class EloquentRepository implements EloquentInterface {
 
         if ($valid->fails()) {
             $this->getErrors($valid->errors());
+            return ['status' => 'failed',  'errors' => $this->errors];
         }
 
         return $this->model->create($data);
@@ -51,6 +52,7 @@ class EloquentRepository implements EloquentInterface {
 
         if ($valid->fails()) {
             $this->getErrors($valid->errors());
+            return null;
         }
 
         $model = $this->model->find($id);
@@ -64,7 +66,7 @@ class EloquentRepository implements EloquentInterface {
 
     public function getErrors($errors)
     {
-        foreach ($errors as $error) {
+        foreach ($errors->all() as $error) {
             $this->errors[] = $error;
         }
     }
