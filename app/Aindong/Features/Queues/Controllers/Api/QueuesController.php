@@ -47,4 +47,46 @@ class QueuesController extends \BaseController {
         // Return as json
         return \Response::json($result, 200);
     }
+
+    public function store()
+    {
+        $data = \Input::all();
+
+        $queue = $this->queue->create($data);
+
+        $status = 'failed';
+        if ($queue['status'] != 'failed') {
+            $status = 'success';
+        }
+
+        $result = ['status' => $status, 'data' => $queue];
+
+        return \Response::json($result, 200);
+    }
+
+    public function update($id)
+    {
+        $data = \Input::all();
+
+        $item = $this->queue->update($id, $data);
+
+        if ($item) {
+            $result = ['status' => 'success', 'data' => $item];
+        } else {
+            $result = ['status' => 'failed', 'data' => $item];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function destroy($id)
+    {
+        $status = $this->queue->delete($id);
+
+        if ($status) {
+            return \Response::json(['status' => 'success'], 200);
+        }
+
+        return \Response::json(['status' => 'failed'], 400);
+    }
 }
