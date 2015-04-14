@@ -36,4 +36,46 @@ class MedicinesController extends \BaseController {
 
         return \Response::json($result, 200);
     }
+
+    public function store()
+    {
+        $data = \Input::all();
+
+        $medicine = $this->medicine->create($data);
+
+        $status = 'failed';
+        if ($medicine['status'] != 'failed') {
+            $status = 'success';
+        }
+
+        $result = ['status' => $status, 'data' => $medicine];
+
+        return \Response::json($result, 200);
+    }
+
+    public function update($id)
+    {
+        $data = \Input::all();
+
+        $item = $this->medicine->update($id, $data);
+
+        if ($item) {
+            $result = ['status' => 'success', 'data' => $item];
+        } else {
+            $result = ['status' => 'failed', 'data' => $item];
+        }
+
+        return \Response::json($result);
+    }
+
+    public function destroy($id)
+    {
+        $status = $this->medicine->delete($id);
+
+        if ($status) {
+            return \Response::json(['status' => 'success'], 200);
+        }
+
+        return \Response::json(['status' => 'failed'], 400);
+    }
 }
