@@ -6,4 +6,5 @@ Route::group(['namespace' => 'Aindong\Features\Medicines\Controllers', 'prefix' 
 
 Route::group(['namespace' => 'Aindong\Features\Medicines\Controllers\Api', 'prefix' => 'api/v1/maintenance'], function() {
     Route::get('medicines', 'MedicinesController@index');
+    Route::post('medicines', 'MedicinesController@store');
 });
