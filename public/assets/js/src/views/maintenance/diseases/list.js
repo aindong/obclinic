@@ -28,7 +28,8 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "id"},
                 {"data": "name"},
                 {"data": "created"},
-                {"data": "updated"}
+                {"data": "updated"},
+                {"data": "actions"}
             ];
 
             Tables.initialize($('#datatable2'), $columns);
