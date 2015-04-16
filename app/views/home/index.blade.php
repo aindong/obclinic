@@ -69,9 +69,8 @@
                             </div>
                             <div class="col-sm-9">
                                 <select name="" id="email" class="form-control" placeholder="Reservation Type" >
-                                    <option value="option1">option1</option>
-                                    <option value="option2">option2</option>
-                                    <option value="option3">option3</option>
+                                    <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                    <option value="WALK-IN">WALK-IN</option>
                                 </select>
                             </div>
                         </div>
@@ -95,7 +94,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-primary btnSubmit">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
