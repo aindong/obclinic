@@ -50,10 +50,16 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="email1" class="control-label">Patient No</label>
+                                <label for="patient_no" class="control-label">Patient No</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="email" name="email1" id="email1" class="form-control" placeholder="Patient No">
+                                <select name="patient_no" id="patient_no">
+                                    @foreach($patients as $patient)
+                                    <option value="{{ $patient->patient_no }}">
+                                        {{ $patient->firstname }} {{ $patient->middlename }} {{ $patient->lastname }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

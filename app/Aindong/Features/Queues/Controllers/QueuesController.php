@@ -20,6 +20,6 @@ class QueuesController extends \BaseController {
 
     public function index()
     {
-
+        return View::make('home.index');
     }
 }
