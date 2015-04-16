@@ -52,6 +52,8 @@ class QueuesController extends \BaseController {
     {
         $data = \Input::all();
 
+        $data['arrival'] = Carbon::today()->format('Y-m-d');
+
         $queue = $this->queue->create($data);
 
         $status = 'failed';
