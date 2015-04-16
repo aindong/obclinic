@@ -6,33 +6,7 @@
             <h2 class="text-primary">Maintenance</h2>
         </div>
         <div class="section-body">
-            <script type="text/template" id="allergy-table">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Allergies &nbsp;
-                            <a href="#" role="button" data-toggle="modal" data-target="#addAllergyModal" class="btn btn-primary ink-reaction">
-                                <i class="md-person-add"></i> ADD AN ALLERGY
-                            </a>
-                        </h4>
-                    </div><!--end .col -->
-                    <div class="col-lg-12">
-                        <div class="table-responsive">
-                            <table id="datatable2" class="table order-column hover" data-source="/api/v1/maintenance/allergies" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Id</th>
-                                    <th>Type</th>
-                                    <th>Name</th>
-                                    <th>Created</th>
-                                    <th>Updated</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div><!--end .table-responsive -->
-                    </div><!--end .col -->
-                </div><!--end .row -->
-            </script>
+
         </div>
     </section>
 
@@ -95,6 +69,35 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <!-- END FORM MODAL MARKUP -->
+
+    <!-- Table Template -->
+    <script type="text/template" id="allergy-table">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Allergies &nbsp;
+                    <a href="#" role="button" data-toggle="modal" data-target="#addAllergyModal" class="btn btn-primary ink-reaction">
+                        <i class="md-person-add"></i> ADD AN ALLERGY
+                    </a>
+                </h4>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table id="datatable2" class="table order-column hover" data-source="/api/v1/maintenance/allergies" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div><!--end .table-responsive -->
+            </div><!--end .col -->
+        </div><!--end .row -->
+    </script>
 @stop
 
 @section('page-scripts')
