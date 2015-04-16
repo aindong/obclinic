@@ -17,52 +17,37 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="formModalLabel">Add Patient on Queue</h4>
+                    <h4 class="modal-title" id="formModalLabel">Add Allergy</h4>
                 </div>
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" id="allergiesForm">
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="email1" class="control-label">Patient No</label>
+                                <label for="email1" class="control-label">Type</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="email" name="email1" id="email1" class="form-control" placeholder="Patient No">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <label for="email1" class="control-label">Reservation Type</label>
-                            </div>
-                            <div class="col-sm-9">
-                                <select name="" id="email" class="form-control" placeholder="Reservation Type" >
-                                    <option value="option1">option1</option>
-                                    <option value="option2">option2</option>
-                                    <option value="option3">option3</option>
+                                <select name="type" id="form-control">
+                                    <option value="food">Food</option>
+                                    <option value="medicine">Medicine</option>
+                                    <option value="others">Others</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="password1" class="control-label">Get Vital Signs</label>
+                                <label for="name" class="control-label">Name</label>
                             </div>
                             <div class="col-sm-9">
-                                <label class="radio-inline radio-styled">
-                                    <input type="radio" name="radio1"/>
-                                    <span>Yes</span>
-                                </label>
-
-                                <label class="radio-inline radio-styled">
-                                    <input type="radio" name="radio1"/>
-                                    <span>No</span>
-                                </label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Allergy Name" required>
                             </div>
                         </div>
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
