@@ -12,21 +12,21 @@
 
 
     <!-- BEGIN FORM MODAL MARKUP -->
-    <div class="modal fade" id="addAllergyModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addDiseaseModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="formModalLabel">Add Patient on Queue</h4>
+                    <h4 class="modal-title" id="formModalLabel">Add A Disease</h4>
                 </div>
                 <form class="form-horizontal" role="form" id="diseasesForm">
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="email1" class="control-label">Patient No</label>
+                                <label for="name" class="control-label">Name</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="email" name="email1" id="email1" class="form-control" placeholder="Patient No">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Disease Name" required>
                             </div>
                         </div>
                     </div>

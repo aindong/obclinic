@@ -47,8 +47,8 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 success: function(data) {
                     if (data.status == 'success') {
                         toastr.success('Successfully added a disease', 'Success');
-                        this.render();
-                        this.triggerMethod('render');
+                        self.render();
+                        self.triggerMethod('render');
                     } else {
                         toastr.error('Failed to add a new disease', 'Error');
                     }
