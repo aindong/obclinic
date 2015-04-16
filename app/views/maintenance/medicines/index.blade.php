@@ -26,7 +26,7 @@
                                 <label for="name" class="control-label">Name</label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="email" name="name" id="name" class="form-control" placeholder="Medicine Name">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Medicine Name">
                             </div>
                         </div>
                     </div>
