@@ -31,7 +31,18 @@ class AllergiesController extends \BaseController {
                 'type'      => $allergy->type,
                 'name'      => $allergy->name,
                 'created'   => Carbon::createFromTimestamp(strtotime($allergy->created_at))->format('M d, Y'),
-                'updated'   => Carbon::createFromTimestamp(strtotime($allergy->updated_at))->format('M d, Y')
+                'updated'   => Carbon::createFromTimestamp(strtotime($allergy->updated_at))->format('M d, Y'),
+                'actions'   => '<div class="btn-group">
+                                    <button type="button" class="btn ink-reaction btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        Actions <i class="fa fa-caret-down text-default-light"></i>
+                                    </button><div class="dropdown-backdrop"></div>
+
+                                    <ul class="dropdown-menu animation-expand" role="menu">
+                                        <li><a href="#">Update</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="fa fa-fw fa-times text-danger"></i> Remove item</a></li>
+                                    </ul>
+                                </div>'
             ];
         }
 

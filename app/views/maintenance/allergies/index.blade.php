@@ -47,7 +47,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -76,6 +76,7 @@
                             <th>Name</th>
                             <th>Created</th>
                             <th>Updated</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                     </table>

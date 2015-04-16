@@ -3,6 +3,12 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
 
     var AllergyListView = Marionette.View.extend({
         el: $('.section-body'),
+
+        initialize: function() {
+            var elem = document.querySelector('#allergiesForm');
+            elem.addEventListener('submit', _.bind(this.createAllergy, this));
+        },
+
         render: function() {
             var template = _.template($('#allergy-table').html(), {});
 
@@ -10,6 +16,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
 
             return this;
         },
+
         onRender: function() {
             var $columns = [
                 {
@@ -22,10 +29,36 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "type"},
                 {"data": "name"},
                 {"data": "created"},
-                {"data": "updated"}
+                {"data": "updated"},
+                {"data": "actions"}
             ];
 
             Tables.initialize($('#datatable2'), $columns);
+        },
+
+        createAllergy: function(e) {
+            var self = this;
+            var form = $('#allergiesForm');
+
+            e.preventDefault();
+
+            $.ajax({
+                url: '/api/v1/maintenance/allergies',
+                type: 'POST',
+                data: form.serialize(),
+                success: function(data) {
+                    if (data.status == 'success') {
+                        toastr.success('Successfully created a new allergy', 'Success');
+                        self.render();
+                        self.triggerMethod('render');
+                    } else {
+                        toastr.error('Failed to add a new allergy', 'Error');
+                    }
+                },
+                error: function() {
+                    toastr.error('Failed to add a new allergy', 'Error');
+                }
+            });
         }
     });
 
