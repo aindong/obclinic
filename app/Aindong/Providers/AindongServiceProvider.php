@@ -13,6 +13,8 @@ class AindongServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->registerCommands();
+
+        $this->registerFeatures();
     }
 
     public function registerCommands()
@@ -22,5 +24,20 @@ class AindongServiceProvider extends ServiceProvider {
         });
 
         $this->commands('commands.aindong.generatefeature');
+    }
+
+    /**
+     * Register application specific providers
+     */
+    private function registerFeatures()
+    {
+        $this->app->register('Aindong\Features\Patients\Providers\PatientsServiceProvider');
+        $this->app->register('Aindong\Features\Medias\Providers\MediasServiceProvider');
+        $this->app->register('Aindong\Features\PatientsVitalSigns\Providers\PatientsVitalSignsServiceProvider');
+        $this->app->register('Aindong\Features\Queues\Providers\QueuesServiceProvider');
+        $this->app->register('Aindong\Features\Allergies\Providers\AllergiesServiceProvider');
+        $this->app->register('Aindong\Features\Medicines\Providers\MedicinesServiceProvider');
+        $this->app->register('Aindong\Features\Diseases\Providers\DiseasesServiceProvider');
+        $this->app->register('Aindong\Features\Appointments\Providers\AppointmentsProvider');
     }
 }
