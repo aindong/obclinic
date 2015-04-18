@@ -5,10 +5,12 @@ define(['underscore',
     'views/patients/list',
     'views/maintenance/allergies/list',
     'views/maintenance/diseases/list',
-    'views/maintenance/medicines/list'
+    'views/maintenance/medicines/list',
+    'views/appointments/list'
     ],
     function(_, Backbone, Marionette, QueueListView,
-             PatientListView, AllergyListView, DiseaseListView, MedicineListView) {
+             PatientListView, AllergyListView, DiseaseListView, MedicineListView,
+             AppointmentsListView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -41,7 +43,9 @@ define(['underscore',
         },
 
         showAppointments: function() {
-            alert('appointments');
+            var appointments = new AppointmentsListView;
+            appointments.render();
+            appointments.triggerMethod('render');
         },
 
         showPatients: function() {

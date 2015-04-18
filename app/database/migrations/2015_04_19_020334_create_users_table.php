@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
             $table->string('firstname');
             $table->string('lastname');
             $table->string('middlename');
-            $table->string('role_id');
+            $table->integer('role_id')->unsigned();
             $table->timestamps();
 
             $table->primary('username');

@@ -4,6 +4,9 @@ Route::group(['namespace' => 'Aindong\Features\Appointments\Controllers'], funct
     Route::get('/appointments', 'AppointmentsController@index');
 });
 
-Route::group(['namespace' => 'Aindong\Features\Appointments\Controllers\Api'], function() {
+Route::group(['namespace' => 'Aindong\Features\Appointments\Controllers\Api',
+    'prefix' => '/api/v1/'], function() {
+
+    Route::get('/appointments', 'AppointmentsController@index');
 
 });

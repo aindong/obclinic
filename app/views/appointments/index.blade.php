@@ -46,15 +46,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <label for="name" class="control-label">Name</label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Allergy Name" required>
-                            </div>
-                        </div>
-
                         <input type="hidden" name="status" value="pending"/>
 
                     </div>
