@@ -17,10 +17,11 @@ class CreateAppointmentsTable extends Migration {
             $table->string('patient_no', 20);
             $table->timestamp('appointment_date');
             $table->string('status', 20);
-            $table->string('username');
+            $table->string('username', 50);
             $table->timestamps();
 
             $table->foreign('patient_no')->references('patient_no')->on('patients');
+            $table->foreign('username')->references('username')->on('users');
         });
 	}
 
