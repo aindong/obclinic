@@ -19,6 +19,9 @@ class AppointmentsController extends \BaseController {
 
     public function index()
     {
-        return \View::make('appointments.index');
+        $patients = $this->patient->all(['patient_no', 'firstname', 'middlename', 'lastname']);
+
+        return \View::make('appointments.index')
+            ->with('patients', $patients);
     }
 }

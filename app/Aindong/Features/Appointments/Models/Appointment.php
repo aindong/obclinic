@@ -7,7 +7,7 @@ class Appointment extends \Eloquent {
 
     public $rules = [
         'patient_no'        => 'required',
-        'appointment_data'  => 'required',
+        'appointment_date'  => 'required',
         'status'            => 'required'
     ];
 

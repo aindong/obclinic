@@ -12,25 +12,37 @@
 
 
     <!-- BEGIN FORM MODAL MARKUP -->
-    <div class="modal fade" id="addAllergyModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="formModalLabel">Add Allergy</h4>
+                    <h4 class="modal-title" id="formModalLabel">Add New Appointment</h4>
                 </div>
-                <form class="form-horizontal" role="form" id="allergiesForm">
+                <form class="form-horizontal" role="form" id="appointmentForm">
                     <div class="modal-body">
+
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="email1" class="control-label">Type</label>
+                                <label for="patient_no" class="control-label">Patient</label>
                             </div>
                             <div class="col-sm-9">
-                                <select name="type" id="form-control">
-                                    <option value="food">Food</option>
-                                    <option value="medicine">Medicine</option>
-                                    <option value="others">Others</option>
+                                <select name="patient_no" id="patient_no">
+                                    @foreach($patients as $patient)
+                                        <option value="{{ $patient->patient_no }}">
+                                            {{ $patient->firstname }} {{ $patient->middlename }} {{ $patient->lastname }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <label class="control-label" for="appointment_date">Date</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="date" name="appointment_date" id="appointment_date" class="form-control" placeholder="Appointment Date"/>
                             </div>
                         </div>
 
@@ -43,6 +55,7 @@
                             </div>
                         </div>
 
+                        <input type="hidden" name="status" value="pending"/>
 
                     </div>
                     <div class="modal-footer">
@@ -59,23 +72,24 @@
     <script type="text/template" id="allergy-table">
         <div class="row">
             <div class="col-md-12">
-                <h4>Allergies &nbsp;
-                    <a href="#" role="button" data-toggle="modal" data-target="#addAllergyModal" class="btn btn-primary ink-reaction">
-                        <i class="md-person-add"></i> ADD AN ALLERGY
+                <h4>Appointments &nbsp;
+                    <a href="#" role="button" data-toggle="modal" data-target="#addAppointmentModal" class="btn btn-primary ink-reaction">
+                        <i class="md-person-add"></i> ADD NEW APPOINTMENT
                     </a>
                 </h4>
             </div><!--end .col -->
             <div class="col-lg-12">
                 <div class="table-responsive">
-                    <table id="datatable2" class="table order-column hover" data-source="/api/v1/maintenance/allergies" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
+                    <table id="datatable2" class="table order-column hover" data-source="/api/v1/appointments" data-swftools="/assets/js/modules/materialadmin/libs/DataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf">
                         <thead>
                         <tr>
                             <th></th>
                             <th>Id</th>
-                            <th>Type</th>
+                            <th>Patient No</th>
                             <th>Name</th>
-                            <th>Created</th>
-                            <th>Updated</th>
+                            <th>Appointment Date</th>
+                            <th>Status</th>
+                            <th>Created By</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
