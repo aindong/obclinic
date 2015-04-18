@@ -40,7 +40,10 @@ class AppointmentsController extends \BaseController {
                                     </button><div class="dropdown-backdrop"></div>
 
                                     <ul class="dropdown-menu animation-expand" role="menu">
-                                        <li><a href="#">Update</a></li>
+                                        <li><a href="#">Postponed</a></li>
+                                        <li><a href="#">Cancelled</a></li>
+                                        <li><a href="#">Completed</a></li>
+
                                         <li class="divider"></li>
                                         <li><a href="#"><i class="fa fa-fw fa-times text-danger"></i> Remove item</a></li>
                                     </ul>
