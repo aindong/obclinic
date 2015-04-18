@@ -38,6 +38,6 @@ class AindongServiceProvider extends ServiceProvider {
         $this->app->register('Aindong\Features\Allergies\Providers\AllergiesServiceProvider');
         $this->app->register('Aindong\Features\Medicines\Providers\MedicinesServiceProvider');
         $this->app->register('Aindong\Features\Diseases\Providers\DiseasesServiceProvider');
-        $this->app->register('Aindong\Features\Appointments\Providers\AppointmentsProvider');
+        $this->app->register('Aindong\Features\Appointments\Providers\AppointmentsServiceProvider');
     }
 }
