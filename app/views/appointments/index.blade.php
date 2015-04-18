@@ -69,7 +69,7 @@
     <!-- END FORM MODAL MARKUP -->
 
     <!-- Table Template -->
-    <script type="text/template" id="allergy-table">
+    <script type="text/template" id="appointment-table">
         <div class="row">
             <div class="col-md-12">
                 <h4>Appointments &nbsp;
