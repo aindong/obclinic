@@ -48,16 +48,11 @@
             <!-- END Patients -->
 
             <!-- BEGIN Appointments -->
-            <li class="gui-folder">
-                <a>
+            <li>
+                <a href="/appointments">
                     <div class="gui-icon"><i class="md md-schedule"></i></div>
                     <span class="title">Appointments</span>
                 </a>
-                <!--start submenu -->
-                <ul>
-                    <li><a href="/appointments" ><span class="title">List</span></a></li>
-                    <li><a href="#" ><span class="title">Create</span></a></li>
-                </ul><!--end /submenu -->
             </li><!--end /menu-li -->
             <!-- END Appointments -->
 
