@@ -1,5 +1,4 @@
 <?php
-
 namespace Aindong\Features\Appointments\Controllers;
 
 use Aindong\Features\Appointments\Repositories\AppointmentInterface;
@@ -20,6 +19,6 @@ class AppointmentsController extends \BaseController {
 
     public function index()
     {
-
+        return \View::make('appointments.index');
     }
 }
