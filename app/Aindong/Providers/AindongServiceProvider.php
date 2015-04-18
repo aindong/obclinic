@@ -39,5 +39,6 @@ class AindongServiceProvider extends ServiceProvider {
         $this->app->register('Aindong\Features\Medicines\Providers\MedicinesServiceProvider');
         $this->app->register('Aindong\Features\Diseases\Providers\DiseasesServiceProvider');
         $this->app->register('Aindong\Features\Appointments\Providers\AppointmentsServiceProvider');
+        $this->app->register('Aindong\Features\Users\Providers\UsersServiceProvider');
     }
 }
