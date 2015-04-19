@@ -20,6 +20,6 @@ class Patient extends \Eloquent {
 
     public function appointment()
     {
-        return $this->hasMany('Appointment', 'patient_no');
+        return $this->hasMany('Aindong\Features\Appointments\Models\Appointment', 'patient_no');
     }
 }

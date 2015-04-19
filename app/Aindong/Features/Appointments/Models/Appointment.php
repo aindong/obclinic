@@ -13,11 +13,11 @@ class Appointment extends \Eloquent {
 
     public function user()
     {
-        return $this->belongsTo('User', 'username');
+        return $this->belongsTo('User', 'username', 'username');
     }
 
     public function patient()
     {
-        return $this->belongsTo('Patient', 'patient_no');
+        return $this->belongsTo('Aindong\Features\Patients\Models\Patient', 'patient_no', 'patient_no');
     }
 }

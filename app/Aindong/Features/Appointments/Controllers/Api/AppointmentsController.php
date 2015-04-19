@@ -29,7 +29,7 @@ class AppointmentsController extends \BaseController {
                 'id'               => $appointment->id,
                 'patient_no'       => $appointment->patient_no,
                 'name'             => $appointment->patient->firstname . ' ' . $appointment->patient->lastname,
-                'appointment_date' => Carbon::createFromTimestamp(strtotime($appointment->appointment_date)->format('M d, Y')),
+                'appointment_date' => Carbon::createFromTimestamp(strtotime($appointment->appointment_date))->format('M d, Y'),
                 'status'           => $appointment->status,
                 'created_by'       => $appointment->user->firstname . ' ' . $appointment->user->lastname,
                 'created'          => Carbon::createFromTimestamp(strtotime($appointment->created_at))->format('M d, Y'),
@@ -57,7 +57,7 @@ class AppointmentsController extends \BaseController {
     public function store()
     {
         $data = \Input::all();
-
+        $data['username'] = 'alan66';
         $appointment = $this->appointment->create($data);
 
         $status = 'failed';
