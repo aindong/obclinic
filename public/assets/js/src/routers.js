@@ -6,18 +6,19 @@ define(['underscore',
     'views/maintenance/allergies/list',
     'views/maintenance/diseases/list',
     'views/maintenance/medicines/list',
-    'views/appointments/list'
+    'views/appointments/list',
+    'views/maintenance/users/list'
     ],
     function(_, Backbone, Marionette, QueueListView,
              PatientListView, AllergyListView, DiseaseListView, MedicineListView,
-             AppointmentsListView) {
+             AppointmentsListView, UsersListView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Define url routes
             '': 'index',
-            'users': 'showUsers',
+            'maintenance/users': 'showUsers',
             'appointments': 'showAppointments',
             'patients': 'showPatients',
             'maintenance/allergies': 'showAllergies',
@@ -39,7 +40,9 @@ define(['underscore',
         },
 
         showUsers: function() {
-
+            var usersView = new UsersListView;
+            usersView.render();
+            usersView.triggerMethod('render');
         },
 
         showAppointments: function() {
