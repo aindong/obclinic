@@ -21,7 +21,7 @@
 			"app/tests/TestCase.php"
 		],
         "psr-4": {
-            "Aindong\\": "App/Aindong"
+            "Aindong\\": "app/Aindong"
         }
 	},
 	"scripts": {
