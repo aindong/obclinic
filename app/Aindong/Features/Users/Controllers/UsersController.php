@@ -20,6 +20,9 @@ class UsersController extends \BaseController {
 
     public function index()
     {
+        $roles = \Role::all();
 
+        return \View::make('maintenance.users.index')
+            ->with('roles', $roles);
     }
 }
