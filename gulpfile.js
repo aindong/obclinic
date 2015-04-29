@@ -29,4 +29,11 @@ gulp.task('js', function () {
 //        .pipe(gulp.dest('firstproject/style'));
 //});
 
-gulp.task('default', ['js']);
+gulp.task('watch', function() {
+    gulp.watch(['public/assets/js/src/main.js', 'public/assets/js/src/helpers/*',
+        'public/assets/js/src/models/*', 'public/assets/js/src/collections/*',
+        'public/assets/js/src/views/*/*', 'public/assets/js/src/views/maintenance/*/*',
+        'public/assets/js/src/routers.js'], ['js']);
+});
+
+gulp.task('default', ['js', 'watch']);
