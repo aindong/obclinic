@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, Backbone, Marionette, Tables) {
+App.Views.Maintenance.Diseases = (function(App) {
     'use strict';
 
-    var DiseaseListView = Marionette.View.extend({
+    var List = Marionette.View.extend({
         el: $('.section-body'),
 
         initialize: function() {
@@ -32,7 +32,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "actions"}
             ];
 
-            Tables.initialize($('#datatable2'), $columns);
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
         },
 
         createDisease: function(e) {
@@ -60,5 +60,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
         }
     });
 
-    return DiseaseListView;
-});
+    return {
+        List: List
+    }
+}(window.App));

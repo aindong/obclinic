@@ -1,4 +1,6 @@
-define(['backbone'], function (Backbone) {
+App.Models.Patient = (function (App) {
+    'use strict';
+
     var Patient = Backbone.Model.extend({
         defaults: {
             'patient_no': '',
@@ -15,4 +17,4 @@ define(['backbone'], function (Backbone) {
     });
 
     return Patient;
-});
+}(window.App));

@@ -92,6 +92,8 @@
 </div><!--end #base-->
 <!-- END BASE -->
 
+
+
 <!-- BEGIN JAVASCRIPT -->
 <script src="/assets/js/modules/materialadmin/libs/jquery/jquery-1.11.2.min.js"></script>
 <script src="/packages/handlebars-v3.0.0.js"></script>
@@ -112,8 +114,11 @@
 <script src="/assets/js/modules/materialadmin/core/cache/63d0445130d69b2868a8d28c93309746.js"></script>
 <script src="/assets/js/modules/materialadmin/libs/select2/select2.min.js"></script>
 <script src="/assets/js/modules/materialadmin/core/demo/Demo.js"></script>
-<script src="/packages/require/require.js"></script>
-<script src="/assets/js/config.js"></script>
+
+<script src="/packages/underscore/underscore.js"></script>
+<script src="/packages/backbone/backbone.js"></script>
+<script src="/packages/marionette/backbone.marionette.js"></script>
+<script src="/assets/js/app.js"></script>
 <!-- END JAVASCRIPT -->
 
 @yield('page-scripts')

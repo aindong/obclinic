@@ -20,7 +20,7 @@
         <ul id="main-menu" class="gui-controls">
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="/" class="active">
+                <a href="/#" class="active">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Dashboard</span>
                 </a>
@@ -35,13 +35,13 @@
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="/maintenance/users" ><span class="title">Users</span></a></li> <!-- TODO -->
-                    <li><a href="/maintenance/allergies" ><span class="title">Allergies</span></a></li>
-                    <li><a href="/maintenance/diseases" ><span class="title">Diseases</span></a></li>
-                    <li><a href="/maintenance/medicines" ><span class="title">Medicines</span></a></li>
-                    <li><a href="/maintenance/procedures" ><span class="title">Procedures</span></a></li> <!-- TODO -->
-                    <li><a href="/maintenance/diagnosis" ><span class="title">Diagnosis</span></a></li> <!-- TODO -->
-                    <li><a href="/maintenance/complaints" ><span class="title">Complaints</span></a></li> <!-- TODO -->
+                    <li><a href="/#maintenance/users" ><span class="title">Users</span></a></li> <!-- TODO -->
+                    <li><a href="/#maintenance/allergies" ><span class="title">Allergies</span></a></li>
+                    <li><a href="/#maintenance/diseases" ><span class="title">Diseases</span></a></li>
+                    <li><a href="/#maintenance/medicines" ><span class="title">Medicines</span></a></li>
+                    <li><a href="/#maintenance/procedures" ><span class="title">Procedures</span></a></li> <!-- TODO -->
+                    <li><a href="/#maintenance/diagnosis" ><span class="title">Diagnosis</span></a></li> <!-- TODO -->
+                    <li><a href="/#maintenance/complaints" ><span class="title">Complaints</span></a></li> <!-- TODO -->
 
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->

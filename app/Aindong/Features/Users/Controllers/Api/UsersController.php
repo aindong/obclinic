@@ -90,4 +90,11 @@ class UsersController extends \BaseController {
 
         return \Response::json(['status' => 'failed'], 400);
     }
+
+    public function roles()
+    {
+        $roles = \Role::all();
+
+        return \Response::json($roles, 200);
+    }
 }

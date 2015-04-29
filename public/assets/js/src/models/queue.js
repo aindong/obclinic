@@ -1,5 +1,7 @@
-define(['backbone', 'marionette'], function (Backbone, Marionette) {
-    var Queue = Marionette.Model.extend({
+App.Models.Queue = (function (App) {
+    'use strict';
+
+    var Queue = Backbone.Model.extend({
         default: {
             'id': '',
             'arrival': '',
@@ -8,4 +10,6 @@ define(['backbone', 'marionette'], function (Backbone, Marionette) {
             'reservation_type': ''
         }
     });
-});
+
+    return Queue;
+}(window.App));

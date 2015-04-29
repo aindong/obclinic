@@ -1,18 +1,17 @@
-define(['marionette', 'models/patient', 'collections/patients', 'views/patients/create'],
-    function(Marionette, PatientModel, PatientsCollection, PatientCreateForm) {
+App.Views.Patients = (function(App) {
     'use strict';
 
         // Instance of the collection
-        var patients = new PatientsCollection();
+        var patients = new App.Collections.Patients();
 
         // View
-        var PatientListView = Marionette.View.extend({
+        var List = Marionette.View.extend({
             el: $('.section-body'),
 
             initialize: function() {
                 this.collection.on('sync', this.render, this);
 
-                var patientCreateForm = new PatientCreateForm({ collection: patients });
+                var patientCreateForm = new App.Views.Patients.Create({ collection: patients });
             },
 
             collection: patients,
@@ -39,5 +38,7 @@ define(['marionette', 'models/patient', 'collections/patients', 'views/patients/
             }
         });
 
-        return PatientListView;
-});
+        return {
+            List: List
+        };
+}(window.App));

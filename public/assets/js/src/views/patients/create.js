@@ -1,7 +1,7 @@
-define(['marionette'], function(Marionette) {
+App.Views.Patients = (function(App) {
     'use strict';
 
-    var PatientForm = Marionette.View.extend({
+    var Create = Marionette.View.extend({
         el: '#createForm',
 
         events: {
@@ -27,5 +27,7 @@ define(['marionette'], function(Marionette) {
         }
     });
 
-    return PatientForm;
-});
+    return {
+        Create: Create
+    }
+}(window.App));

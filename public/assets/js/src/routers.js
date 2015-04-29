@@ -1,17 +1,4 @@
-define(['underscore',
-    'backbone',
-    'marionette',
-    'views/queues/list',
-    'views/patients/list',
-    'views/maintenance/allergies/list',
-    'views/maintenance/diseases/list',
-    'views/maintenance/medicines/list',
-    'views/appointments/list',
-    'views/maintenance/users/list'
-    ],
-    function(_, Backbone, Marionette, QueueListView,
-             PatientListView, AllergyListView, DiseaseListView, MedicineListView,
-             AppointmentsListView, UsersListView) {
+(function(App) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -30,51 +17,51 @@ define(['underscore',
         },
 
         initialize: function() {
-            Backbone.history.start({ pushState: true });
+            Backbone.history.start({ pushState: false });
         },
 
         index: function() {
-            var queueListView = new QueueListView;
+
+            var queueListView = new App.Views.Queues.List;
             queueListView.render();
-            queueListView.triggerMethod('render');
         },
 
         showUsers: function() {
-            var usersView = new UsersListView;
+
+            var usersView = new App.Views.Maintenance.Users.List;
             usersView.render();
-            usersView.triggerMethod('render');
         },
 
         showAppointments: function() {
-            var appointments = new AppointmentsListView;
+            var appointments = new App.Views.Appointments.List;
             appointments.render();
             appointments.triggerMethod('render');
         },
 
         showPatients: function() {
-            var patientListView = new PatientListView;
+            var patientListView = new App.Views.Patients.List;
             patientListView.triggerMethod('before:render');
         },
 
         showAllergies: function() {
-            var allergyView = new AllergyListView;
+            var allergyView = new App.Views.Maintenance.Allergies.List;
             allergyView.render();
             allergyView.triggerMethod('render');
         },
 
         showDiseases: function() {
-            var diseaseView = new DiseaseListView;
+            var diseaseView = new App.Views.Maintenance.Diseases.List;
             diseaseView.render();
             diseaseView.triggerMethod('render');
         },
 
         showMedicines: function() {
-            var medicineView = new MedicineListView;
+            var medicineView = new App.Views.Maintenance.Medicines.List;
             medicineView.render();
             medicineView.triggerMethod('render');
         }
 
     });
 
-    return AppRouter;
-});
+    return new AppRouter;
+}(window.App));

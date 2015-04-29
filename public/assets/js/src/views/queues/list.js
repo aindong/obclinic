@@ -1,22 +1,30 @@
-define(['underscore', 'backbone', 'marionette', 'helpers/tables'],
-    function(_, Backbone, Marionette, Tables) {
+App.Views.Queues = (function(App) {
     'use strict';
 
-    var QueueListView = Marionette.View.extend({
-        el: $('.section-body'),
+    var List = Marionette.View.extend({
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#createQueueForm');
 
-            elem.addEventListener('submit', _.bind(this.createQueue, this));
         },
 
         render: function() {
-            var template = _.template($('#queue-table').html(), {});
+            var self = this;
 
-            this.$el.html(template);
+            $.get('/assets/templates/queues/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
 
-            return this;
+                $.get('/api/v1/patients?q=all', function(res) {
+
+                    self.$el.html(template({data: res}));
+                    self.triggerMethod('render');
+
+                    var elem = document.querySelector('#createQueueForm');
+                    elem.addEventListener('submit', _.bind(self.createQueue, self));
+
+                    return this;
+                });
+            });
         },
 
         onRender: function() {
@@ -36,7 +44,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'],
                 {"data": "type"}
             ];
 
-            Tables.initialize($('#datatable2'), $columns);
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
         },
 
         createQueue: function(e) {
@@ -67,5 +75,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'],
         }
     });
 
-    return QueueListView;
-});
+    return {
+        List: List
+    }
+}(window.App));

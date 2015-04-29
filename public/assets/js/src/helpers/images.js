@@ -1,4 +1,6 @@
-define(function() {
+App.Helpers.Images = (function(App) {
+    'use strict';
+
     function ImgToBase64(url, callback, outputFormat) {
         var canvas = document.createElement('canvas'),
             ctx = canvas.getContext('2d'),
@@ -21,4 +23,4 @@ define(function() {
     return {
         ImgToBase64: ImgToBase64
     }
-});
+}(window.App));

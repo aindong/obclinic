@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, Backbone, Marionette, Tables) {
+App.Views.Appointments = (function(App) {
     'use strict';
 
-    var AppointmentListView = Marionette.View.extend({
+    var List = Marionette.View.extend({
         el: $('.section-body'),
 
         initialize: function() {
@@ -34,7 +34,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "actions"}
             ];
 
-            Tables.initialize($('#datatable2'), $columns);
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
         },
 
         createAppointment: function(e) {
@@ -63,5 +63,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
         }
     });
 
-    return AppointmentListView;
-});
+    return {
+        List: List
+    }
+}(window.App));

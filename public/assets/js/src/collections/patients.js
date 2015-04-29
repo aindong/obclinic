@@ -1,6 +1,8 @@
-define(['backbone', 'models/patient'], function(Backbone, PatientModel) {
+App.Collections.Patients = (function(App) {
+    'use strict';
+
     var Patients = Backbone.Collection.extend({
-        model: PatientModel,
+        model: App.Models.PatientModel,
         url: '/api/v1/patients',
         parse: function(response) {
             return response.data;
@@ -8,4 +10,4 @@ define(['backbone', 'models/patient'], function(Backbone, PatientModel) {
     });
 
     return Patients;
-});
+}(window.App));

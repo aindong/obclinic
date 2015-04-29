@@ -23,6 +23,12 @@ class PatientsController extends \BaseController {
         // Create the result
         $result = $this->patient->paginate();
 
+        if (\Input::has('q')) {
+            if (\Input::get('q') == 'all')
+            // Create the result
+            $result = $this->patient->all();
+        }
+
         return \Response::json($result, 200);
     }
 

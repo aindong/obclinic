@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, Backbone, Marionette, Tables) {
+App.Views.Maintenance.Allergies = (function(App) {
     'use strict';
 
-    var AllergyListView = Marionette.View.extend({
+    var List = Marionette.View.extend({
         el: $('.section-body'),
 
         initialize: function() {
@@ -33,7 +33,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "actions"}
             ];
 
-            Tables.initialize($('#datatable2'), $columns);
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
         },
 
         createAllergy: function(e) {
@@ -62,5 +62,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
         }
     });
 
-    return AllergyListView;
-});
+    return {
+        List: List
+    }
+}(window.App));

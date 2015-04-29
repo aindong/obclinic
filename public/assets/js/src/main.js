@@ -1,7 +1,7 @@
-define(['routers'], function(Routers){
+(function($, Backbone, Marionette ){
     'use strict';
 
-    var app = new Routers;
+    $('select').select2();
 
     // Toastr Configuration
     toastr.options = {
@@ -18,4 +18,14 @@ define(['routers'], function(Routers){
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
-});
+
+    window.App =  {
+        Helpers: {},
+        Models: {},
+        Views: {
+            Maintenance: {}
+        },
+        Collections: {}
+    };
+
+}(jQuery, Backbone, Marionette));

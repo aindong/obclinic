@@ -1,23 +1,41 @@
-define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, Backbone, Marionette, Tables) {
+App.Views.Maintenance.Users = (function(App) {
     'use strict';
 
-    var UserListView = Marionette.View.extend({
-        el: $('.section-body'),
+    var List = Marionette.View.extend({
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#usersForm');
-            elem.addEventListener('submit', _.bind(this.createUser, this));
+
         },
 
         render: function() {
-            var template = _.template($('#user-table').html(), {});
+            //var template = _.template($('#user-table').html(), {});
+            //
+            //this.$el.html(template);
+            //
+            //return this;
+            //
+            var self = this;
 
-            this.$el.html(template);
+            $.get('/assets/templates/users/users.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
 
-            return this;
+                $.get('/api/v1/maintenance/users/roles', function(res) {
+
+                    self.$el.html(template({data: res}));
+                    self.triggerMethod('render');
+
+                    var elem = document.querySelector('#usersForm');
+                    elem.addEventListener('submit', _.bind(self.createUser, self));
+
+                    return this;
+                });
+            });
         },
 
         onRender: function() {
+
+
             var $columns = [
                 {
                     "class": 'details-control',
@@ -33,7 +51,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
                 {"data": "actions"}
             ];
 
-            Tables.initialize($('#datatable2'), $columns);
+            App.Helpers.Table.initialize($('#usersTable'), $columns);
         },
 
         createUser: function(e) {
@@ -62,5 +80,7 @@ define(['underscore', 'backbone', 'marionette', 'helpers/tables'], function(_, B
         }
     });
 
-    return UserListView;
-});
+    return {
+        List: List
+    }
+}(window.App));

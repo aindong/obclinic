@@ -1,4 +1,4 @@
-define(function() {
+App.Helpers.Table  = (function(App) {
     "use strict";
 
     var TableDynamic = function() {
@@ -90,4 +90,4 @@ define(function() {
 
     // =========================================================================
     return p;
-});
+}(window.App));

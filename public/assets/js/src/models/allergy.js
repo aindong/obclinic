@@ -1,5 +1,7 @@
-define(['backbone', 'marionette'], function (Backbone, Marionette) {
-    var Allergy = Marionette.Model.extend({
+App.Models.Allergy = (function (App) {
+    'use strict';
+
+    var Allergy = Backbone.Model.extend({
         default: {
             'type': '',
             'name': ''
@@ -7,4 +9,4 @@ define(['backbone', 'marionette'], function (Backbone, Marionette) {
     });
 
     return Allergy;
-});
+}(window.App));
