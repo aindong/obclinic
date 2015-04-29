@@ -2,19 +2,32 @@ App.Views.Appointments = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#appointmentForm');
-            elem.addEventListener('submit', _.bind(this.createAppointment, this));
+
         },
 
         render: function() {
-            var template = _.template($('#appointment-table').html(), {});
 
-            this.$el.html(template);
+            var self = this;
 
-            return this;
+            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                $.get('/api/v1/patients?q=all', function(res) {
+                    self.$el.html(template({data: res}));
+
+                    self.triggerMethod('render');
+
+                    $('select').select2();
+
+                    var elem = document.querySelector('#appointmentForm');
+                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
+
+                    return self;
+                });
+            });
         },
 
         onRender: function() {

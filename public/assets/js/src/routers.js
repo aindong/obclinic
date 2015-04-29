@@ -21,13 +21,11 @@
         },
 
         index: function() {
-
             var queueListView = new App.Views.Queues.List;
             queueListView.render();
         },
 
         showUsers: function() {
-
             var usersView = new App.Views.Maintenance.Users.List;
             usersView.render();
         },
@@ -35,7 +33,6 @@
         showAppointments: function() {
             var appointments = new App.Views.Appointments.List;
             appointments.render();
-            appointments.triggerMethod('render');
         },
 
         showPatients: function() {
@@ -46,19 +43,16 @@
         showAllergies: function() {
             var allergyView = new App.Views.Maintenance.Allergies.List;
             allergyView.render();
-            allergyView.triggerMethod('render');
         },
 
         showDiseases: function() {
             var diseaseView = new App.Views.Maintenance.Diseases.List;
             diseaseView.render();
-            diseaseView.triggerMethod('render');
         },
 
         showMedicines: function() {
             var medicineView = new App.Views.Maintenance.Medicines.List;
             medicineView.render();
-            medicineView.triggerMethod('render');
         }
 
     });

@@ -19,10 +19,12 @@ App.Views.Queues = (function(App) {
                     self.$el.html(template({data: res}));
                     self.triggerMethod('render');
 
+                    $('select').select2();
+
                     var elem = document.querySelector('#createQueueForm');
                     elem.addEventListener('submit', _.bind(self.createQueue, self));
 
-                    return this;
+                    return self;
                 });
             });
         },

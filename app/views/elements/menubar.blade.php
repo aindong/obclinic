@@ -49,7 +49,7 @@
 
             <!-- BEGIN Appointments -->
             <li>
-                <a href="/appointments">
+                <a href="/#appointments">
                     <div class="gui-icon"><i class="md md-schedule"></i></div>
                     <span class="title">Appointments</span>
                 </a>
@@ -64,7 +64,7 @@
                 </a>
                 <!--start submenu -->
                 <ul>
-                    <li><a href="/patients" ><span class="title">List</span></a></li>
+                    <li><a href="/#patients" ><span class="title">List</span></a></li>
                 </ul><!--end /submenu -->
             </li><!--end /menu-li -->
             <!-- END Patients -->

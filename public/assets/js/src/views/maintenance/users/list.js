@@ -25,10 +25,12 @@ App.Views.Maintenance.Users = (function(App) {
                     self.$el.html(template({data: res}));
                     self.triggerMethod('render');
 
+                    $('select').select2();
+
                     var elem = document.querySelector('#usersForm');
                     elem.addEventListener('submit', _.bind(self.createUser, self));
 
-                    return this;
+                    return self;
                 });
             });
         },

@@ -1,8 +1,6 @@
 (function($, Backbone, Marionette ){
     'use strict';
 
-    $('select').select2();
-
     // Toastr Configuration
     toastr.options = {
         "closeButton": true,

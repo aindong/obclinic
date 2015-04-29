@@ -1,8 +1,6 @@
 (function($, Backbone, Marionette ){
     'use strict';
 
-    $('select').select2();
-
     // Toastr Configuration
     toastr.options = {
         "closeButton": true,
@@ -212,19 +210,32 @@ App.Views.Appointments = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#appointmentForm');
-            elem.addEventListener('submit', _.bind(this.createAppointment, this));
+
         },
 
         render: function() {
-            var template = _.template($('#appointment-table').html(), {});
 
-            this.$el.html(template);
+            var self = this;
 
-            return this;
+            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                $.get('/api/v1/patients?q=all', function(res) {
+                    self.$el.html(template({data: res}));
+
+                    self.triggerMethod('render');
+
+                    $('select').select2();
+
+                    var elem = document.querySelector('#appointmentForm');
+                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
+
+                    return self;
+                });
+            });
         },
 
         onRender: function() {
@@ -376,10 +387,12 @@ App.Views.Queues = (function(App) {
                     self.$el.html(template({data: res}));
                     self.triggerMethod('render');
 
+                    $('select').select2();
+
                     var elem = document.querySelector('#createQueueForm');
                     elem.addEventListener('submit', _.bind(self.createQueue, self));
 
-                    return this;
+                    return self;
                 });
             });
         },
@@ -665,10 +678,12 @@ App.Views.Maintenance.Users = (function(App) {
                     self.$el.html(template({data: res}));
                     self.triggerMethod('render');
 
+                    $('select').select2();
+
                     var elem = document.querySelector('#usersForm');
                     elem.addEventListener('submit', _.bind(self.createUser, self));
 
-                    return this;
+                    return self;
                 });
             });
         },
@@ -747,13 +762,11 @@ App.Views.Maintenance.Users = (function(App) {
         },
 
         index: function() {
-
             var queueListView = new App.Views.Queues.List;
             queueListView.render();
         },
 
         showUsers: function() {
-
             var usersView = new App.Views.Maintenance.Users.List;
             usersView.render();
         },
@@ -761,7 +774,6 @@ App.Views.Maintenance.Users = (function(App) {
         showAppointments: function() {
             var appointments = new App.Views.Appointments.List;
             appointments.render();
-            appointments.triggerMethod('render');
         },
 
         showPatients: function() {
@@ -772,19 +784,16 @@ App.Views.Maintenance.Users = (function(App) {
         showAllergies: function() {
             var allergyView = new App.Views.Maintenance.Allergies.List;
             allergyView.render();
-            allergyView.triggerMethod('render');
         },
 
         showDiseases: function() {
             var diseaseView = new App.Views.Maintenance.Diseases.List;
             diseaseView.render();
-            diseaseView.triggerMethod('render');
         },
 
         showMedicines: function() {
             var medicineView = new App.Views.Maintenance.Medicines.List;
             medicineView.render();
-            medicineView.triggerMethod('render');
         }
 
     });
