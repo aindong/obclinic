@@ -2,19 +2,26 @@ App.Views.Maintenance.Allergies = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#allergiesForm');
-            elem.addEventListener('submit', _.bind(this.createAllergy, this));
+
         },
 
         render: function() {
-            var template = _.template($('#allergy-table').html(), {});
+            var self = this;
+            $.get('/assets/templates/allergies/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
 
-            this.$el.html(template);
+                self.$el.html(template);
+                self.triggerMethod('render');
+                $('select').select2();
 
-            return this;
+                var elem = document.querySelector('#allergiesForm');
+                elem.addEventListener('submit', _.bind(self.createAllergy, self));
+
+                return self;
+            });
         },
 
         onRender: function() {

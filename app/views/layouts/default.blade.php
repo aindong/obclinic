@@ -118,7 +118,7 @@
 <script src="/packages/underscore/underscore.js"></script>
 <script src="/packages/backbone/backbone.js"></script>
 <script src="/packages/marionette/backbone.marionette.js"></script>
-<script src="/assets/js/app.min.js"></script>
+<script src="/assets/js/app.js"></script>
 <!-- END JAVASCRIPT -->
 
 @yield('page-scripts')

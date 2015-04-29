@@ -5,7 +5,8 @@ App.Helpers.Table  = (function(App) {
         // Create reference to this instance
         var o = this;
     };
-    var p = TableDynamic.prototype;
+    var p = TableDynamic.prototype,
+        table;
 
     // =========================================================================
     // INIT
@@ -29,23 +30,28 @@ App.Helpers.Table  = (function(App) {
     };
 
     p._createDataTable = function($el, $columns) {
-        var table = $el.DataTable({
-            "dom": 'T<"clear">lfrtip',
-            "ajax": $el.data('source'),
-            "columns": $columns,
-            "tableTools": {
-                "sSwfPath": $el.data('swftools')
-            },
-            "order": [[1, 'asc']],
-            "language": {
-                "lengthMenu": '_MENU_ entries per page',
-                "search": '<i class="fa fa-search"></i>',
-                "paginate": {
-                    "previous": '<i class="fa fa-angle-left"></i>',
-                    "next": '<i class="fa fa-angle-right"></i>'
+        if ( $.fn.dataTable.isDataTable( $el ) ) {
+            table = $el.DataTable();
+            table.ajax.reload();
+        } else {
+            table = $el.DataTable({
+                "dom": 'T<"clear">lfrtip',
+                "ajax": $el.data('source'),
+                "columns": $columns,
+                "tableTools": {
+                    "sSwfPath": $el.data('swftools')
+                },
+                "order": [[1, 'asc']],
+                "language": {
+                    "lengthMenu": '_MENU_ entries per page',
+                    "search": '<i class="fa fa-search"></i>',
+                    "paginate": {
+                        "previous": '<i class="fa fa-angle-left"></i>',
+                        "next": '<i class="fa fa-angle-right"></i>'
+                    }
                 }
-            }
-        });
+            });
+        }
 
         //Add event listener for opening and closing details
         var o = this;
