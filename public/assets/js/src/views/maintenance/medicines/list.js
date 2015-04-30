@@ -2,7 +2,7 @@ App.Views.Maintenance.Medicines = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
 
@@ -12,7 +12,7 @@ App.Views.Maintenance.Medicines = (function(App) {
             var self = this;
 
             $.get('/assets/templates/medicines/index.tpl.html', function(data) {
-                var template = _.template(data);
+                var template = Handlebars.compile(data);
 
                 self.$el.html(template);
                 self.triggerMethod('render');

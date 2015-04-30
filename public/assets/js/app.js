@@ -268,6 +268,77 @@ App.Collections.Patients = (function(App) {
 
     return Patients;
 }(window.App));
+App.Views.Appointments = (function(App) {
+    'use strict';
+
+    var List = Marionette.View.extend({
+        el: $('#content'),
+
+        initialize: function() {
+
+        },
+
+        render: function() {
+
+            var self = this;
+
+            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                $.get('/api/v1/patients?q=all', function(res) {
+                    self.$el.html(template({data: res}));
+
+                    self.triggerMethod('render');
+
+                    $('select').select2();
+
+                    var elem = document.querySelector('#appointmentForm');
+                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
+
+                    return self;
+                });
+            });
+        },
+
+        onRender: function() {
+            var $columns = [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                {"data": "id"},
+                {"data": "patient_no"},
+                {"data": "name"},
+                {"data": "appointment_date"},
+                {"data": "status"},
+                {"data": "created_by"},
+                {"data": "actions"}
+            ];
+
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
+        },
+
+        createAppointment: function(e) {
+            e.preventDefault();
+
+            var form = $('#appointmentForm');
+            var url = '/api/v1/appointments';
+            var messages = {
+                success: 'Successfully created a new appointment',
+                failed: 'Failed to add a new appointment'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
+        }
+    });
+
+    return {
+        List: List
+    }
+}(window.App));
 App.Views.Patients = (function(App) {
     'use strict';
 
@@ -344,77 +415,6 @@ App.Views.Patients = (function(App) {
         return {
             List: List
         };
-}(window.App));
-App.Views.Appointments = (function(App) {
-    'use strict';
-
-    var List = Marionette.View.extend({
-        el: $('#content'),
-
-        initialize: function() {
-
-        },
-
-        render: function() {
-
-            var self = this;
-
-            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
-                var template = Handlebars.compile(data);
-
-                $.get('/api/v1/patients?q=all', function(res) {
-                    self.$el.html(template({data: res}));
-
-                    self.triggerMethod('render');
-
-                    $('select').select2();
-
-                    var elem = document.querySelector('#appointmentForm');
-                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
-
-                    return self;
-                });
-            });
-        },
-
-        onRender: function() {
-            var $columns = [
-                {
-                    "class": 'details-control',
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": ''
-                },
-                {"data": "id"},
-                {"data": "patient_no"},
-                {"data": "name"},
-                {"data": "appointment_date"},
-                {"data": "status"},
-                {"data": "created_by"},
-                {"data": "actions"}
-            ];
-
-            App.Helpers.Table.initialize($('#datatable2'), $columns);
-        },
-
-        createAppointment: function(e) {
-            e.preventDefault();
-
-            var form = $('#appointmentForm');
-            var url = '/api/v1/appointments';
-            var messages = {
-                success: 'Successfully created a new appointment',
-                failed: 'Failed to add a new appointment'
-            };
-
-            var $http = App.Helpers.Http;
-            $http.post(this, form, url, messages);
-        }
-    });
-
-    return {
-        List: List
-    }
 }(window.App));
 
 App.Views.Queues = (function(App) {
@@ -618,21 +618,26 @@ App.Views.Maintenance.Medicines = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#medicinesForm');
 
-            elem.addEventListener('submit', _.bind(this.createMedicine, this));
         },
 
         render: function() {
-            var 
-            var template = _.template($('#medicine-table').html(), {});
+            var self = this;
 
-            this.$el.html(template);
+            $.get('/assets/templates/medicines/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
 
-            return this;
+                self.$el.html(template);
+                self.triggerMethod('render');
+
+                var elem = document.querySelector('#medicinesForm');
+                elem.addEventListener('submit', _.bind(self.createMedicine, self));
+
+                return self;
+            });
         },
 
         onRender: function() {
