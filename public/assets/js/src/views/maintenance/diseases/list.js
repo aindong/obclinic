@@ -2,19 +2,27 @@ App.Views.Maintenance.Diseases = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#diseasesForm');
-            elem.addEventListener('submit', _.bind(this.createDisease, this));
+
         },
 
         render: function() {
-            var template = _.template($('#disease-table').html(), {});
 
-            this.$el.html(template);
+            var self = this;
 
-            return this;
+            $.get('/assets/templates/diseases/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                this.$el.html(template);
+                self.triggerMethod('render');
+
+                var elem = document.querySelector('#diseasesForm');
+                elem.addEventListener('submit', _.bind(self.createDisease, self));
+
+                return self;
+            })
         },
 
         onRender: function() {
