@@ -15,7 +15,7 @@ App.Views.Maintenance.Diseases = (function(App) {
             $.get('/assets/templates/diseases/index.tpl.html', function(data) {
                 var template = Handlebars.compile(data);
 
-                this.$el.html(template);
+                self.$el.html(template);
                 self.triggerMethod('render');
 
                 var elem = document.querySelector('#diseasesForm');
@@ -45,26 +45,16 @@ App.Views.Maintenance.Diseases = (function(App) {
 
         createDisease: function(e) {
             e.preventDefault();
-            var self = this;
-            var form = $('#diseasesForm');
 
-            $.ajax({
-                url: '/api/v1/maintenance/diseases',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully added a disease', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new disease', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new disease', 'Error');
-                }
-            });
+            var form = $('#diseasesForm');
+            var url = '/api/v1/maintenance/diseases';
+            var messages = {
+                success: 'Successfully added a disease',
+                failed: 'Failed to add a new disease'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

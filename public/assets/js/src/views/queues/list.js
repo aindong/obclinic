@@ -51,29 +51,15 @@ App.Views.Queues = (function(App) {
 
         createQueue: function(e) {
             e.preventDefault();
-            var self = this;
-
             var form = $('#createQueueForm');
+            var url = '/api/v1/queues';
+            var messages = {
+                success: 'Successfully added a new patient on the queue',
+                faled: 'Failed to add a new patient on the queue'
+            };
 
-            $.ajax({
-                url: '/api/v1/queues',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    console.log(data);
-
-                    if (data.status == 'success') {
-                        toastr.success('Successfully added a new queue', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Opps! Theres something wrong', 'Error');
-                    }
-                },
-                error: function(xhr, data, status) {
-                    toastr.error('Opps! Theres something wrong', 'Error');
-                }
-            });
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

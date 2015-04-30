@@ -57,28 +57,17 @@ App.Views.Maintenance.Users = (function(App) {
         },
 
         createUser: function(e) {
-            var self = this;
-            var form = $('#usersForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/maintenance/users',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new user', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new user', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new user', 'Error');
-                }
-            });
+            var form = $('#usersForm');
+            var url = '/api/v1/maintenance/users';
+            var messages = {
+                success: 'Successfully created a new user',
+                failed: 'Failed to create a new user'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

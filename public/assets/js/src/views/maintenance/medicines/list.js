@@ -40,25 +40,14 @@ App.Views.Maintenance.Medicines = (function(App) {
             e.preventDefault();
 
             var form = $('#medicinesForm');
-            var self = this;
+            var url = '/api/v1/maintenance/medicines';
+            var messages = {
+                success: 'Successfully created a new medicine',
+                failed: 'Failed to create a new medicine'
+            };
 
-            $.ajax({
-                url: '/api/v1/maintenance/medicines',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new medicine', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to create a new medicine', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to create a new medicine', 'Error');
-                }
-            });
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

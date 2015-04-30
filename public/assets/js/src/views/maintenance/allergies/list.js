@@ -44,28 +44,17 @@ App.Views.Maintenance.Allergies = (function(App) {
         },
 
         createAllergy: function(e) {
-            var self = this;
-            var form = $('#allergiesForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/maintenance/allergies',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new allergy', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new allergy', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new allergy', 'Error');
-                }
-            });
+            var form = $('#allergiesForm');
+            var url = '/api/v1/maintenance/allergies';
+            var messages = {
+                success: 'Successfully created a new allergy',
+                failed: 'Failed to add a new allergy'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

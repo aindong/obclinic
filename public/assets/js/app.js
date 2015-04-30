@@ -27,6 +27,62 @@
     };
 
 }(jQuery, Backbone, Marionette));
+App.Helpers.Http = (function($) {
+    'use strict';
+
+    /**
+     * Main Class
+     * @type {{}}
+     */
+    var c = {};
+
+    c.getTemplate = function (url) {
+        
+    };
+
+    /**
+     * Post HTTP helper
+     *
+     * @param context
+     * @param $form
+     * @param url
+     * @param messages
+     * @returns {c}
+     */
+    c.post = function (context, $form, url, messages) {
+        var self = context;
+        var form = $form;
+
+        var btn = $('.btn-loading-state');
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: form.serialize(),
+            beforeSend: function() {
+                btn.button('loading');
+            },
+            success: function(data) {
+                if (data.status == 'success') {
+                    toastr.success(messages.success, 'Success');
+                    self.triggerMethod('render');
+                } else {
+                    toastr.error(messages.failed, 'Error');
+                }
+            },
+            error: function() {
+                toastr.error(messages.failed, 'Error');
+            },
+            complete: function() {
+                btn.button('reset');
+            }
+        });
+
+        return this;
+    };
+
+    return c;
+}(jQuery));
 App.Helpers.Images = (function(App) {
     'use strict';
 
@@ -265,28 +321,17 @@ App.Views.Appointments = (function(App) {
         },
 
         createAppointment: function(e) {
-            var self = this;
-            var form = $('#appointmentForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/appointments',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new appointment', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new appointment', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new appointment', 'Error');
-                }
-            });
+            var form = $('#appointmentForm');
+            var url = '/api/v1/appointments';
+            var messages = {
+                success: 'Successfully created a new appointment',
+                failed: 'Failed to add a new appointment'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
@@ -425,29 +470,15 @@ App.Views.Queues = (function(App) {
 
         createQueue: function(e) {
             e.preventDefault();
-            var self = this;
-
             var form = $('#createQueueForm');
+            var url = '/api/v1/queues';
+            var messages = {
+                success: 'Successfully added a new patient on the queue',
+                faled: 'Failed to add a new patient on the queue'
+            };
 
-            $.ajax({
-                url: '/api/v1/queues',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    console.log(data);
-
-                    if (data.status == 'success') {
-                        toastr.success('Successfully added a new queue', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Opps! Theres something wrong', 'Error');
-                    }
-                },
-                error: function(xhr, data, status) {
-                    toastr.error('Opps! Theres something wrong', 'Error');
-                }
-            });
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
@@ -501,28 +532,17 @@ App.Views.Maintenance.Allergies = (function(App) {
         },
 
         createAllergy: function(e) {
-            var self = this;
-            var form = $('#allergiesForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/maintenance/allergies',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new allergy', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new allergy', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new allergy', 'Error');
-                }
-            });
+            var form = $('#allergiesForm');
+            var url = '/api/v1/maintenance/allergies';
+            var messages = {
+                success: 'Successfully created a new allergy',
+                failed: 'Failed to add a new allergy'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
@@ -534,19 +554,27 @@ App.Views.Maintenance.Diseases = (function(App) {
     'use strict';
 
     var List = Marionette.View.extend({
-        el: $('.section-body'),
+        el: $('#content'),
 
         initialize: function() {
-            var elem = document.querySelector('#diseasesForm');
-            elem.addEventListener('submit', _.bind(this.createDisease, this));
+
         },
 
         render: function() {
-            var template = _.template($('#disease-table').html(), {});
 
-            this.$el.html(template);
+            var self = this;
 
-            return this;
+            $.get('/assets/templates/diseases/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                self.$el.html(template);
+                self.triggerMethod('render');
+
+                var elem = document.querySelector('#diseasesForm');
+                elem.addEventListener('submit', _.bind(self.createDisease, self));
+
+                return self;
+            })
         },
 
         onRender: function() {
@@ -569,26 +597,16 @@ App.Views.Maintenance.Diseases = (function(App) {
 
         createDisease: function(e) {
             e.preventDefault();
-            var self = this;
-            var form = $('#diseasesForm');
 
-            $.ajax({
-                url: '/api/v1/maintenance/diseases',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully added a disease', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new disease', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new disease', 'Error');
-                }
-            });
+            var form = $('#diseasesForm');
+            var url = '/api/v1/maintenance/diseases';
+            var messages = {
+                success: 'Successfully added a disease',
+                failed: 'Failed to add a new disease'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
@@ -638,25 +656,14 @@ App.Views.Maintenance.Medicines = (function(App) {
             e.preventDefault();
 
             var form = $('#medicinesForm');
-            var self = this;
+            var url = '/api/v1/maintenance/medicines';
+            var messages = {
+                success: 'Successfully created a new medicine',
+                failed: 'Failed to create a new medicine'
+            };
 
-            $.ajax({
-                url: '/api/v1/maintenance/medicines',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new medicine', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to create a new medicine', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to create a new medicine', 'Error');
-                }
-            });
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
@@ -723,28 +730,17 @@ App.Views.Maintenance.Users = (function(App) {
         },
 
         createUser: function(e) {
-            var self = this;
-            var form = $('#usersForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/maintenance/users',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new user', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new user', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new user', 'Error');
-                }
-            });
+            var form = $('#usersForm');
+            var url = '/api/v1/maintenance/users';
+            var messages = {
+                success: 'Successfully created a new user',
+                failed: 'Failed to create a new user'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 

@@ -51,28 +51,17 @@ App.Views.Appointments = (function(App) {
         },
 
         createAppointment: function(e) {
-            var self = this;
-            var form = $('#appointmentForm');
-
             e.preventDefault();
 
-            $.ajax({
-                url: '/api/v1/appointments',
-                type: 'POST',
-                data: form.serialize(),
-                success: function(data) {
-                    if (data.status == 'success') {
-                        toastr.success('Successfully created a new appointment', 'Success');
-                        self.render();
-                        self.triggerMethod('render');
-                    } else {
-                        toastr.error('Failed to add a new appointment', 'Error');
-                    }
-                },
-                error: function() {
-                    toastr.error('Failed to add a new appointment', 'Error');
-                }
-            });
+            var form = $('#appointmentForm');
+            var url = '/api/v1/appointments';
+            var messages = {
+                success: 'Successfully created a new appointment',
+                failed: 'Failed to add a new appointment'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
         }
     });
 
