@@ -17,6 +17,21 @@
         "hideMethod": "fadeOut"
     };
 
+
+    // Sidebar/Menubar active/inactive toggle
+    $('#main-menu > li').click(function() {
+        $(this).addClass('active')
+            .siblings()
+                .removeClass('active');
+    });
+
+    $('#main-menu li ul li').click(function() {
+        var parent = $(this).parent().parent();
+        if (!parent.hasClass('active')) {
+            parent.addClass('active').siblings().removeClass('active');
+        }
+    });
+
     window.App =  {
         Helpers: {},
         Models: {},

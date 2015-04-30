@@ -20,7 +20,7 @@
         <ul id="main-menu" class="gui-controls">
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="/#" class="active">
+                <a href="/#" class="">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Dashboard</span>
                 </a>
