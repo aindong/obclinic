@@ -5,17 +5,23 @@ App.Views.Maintenance.Medicines = (function(App) {
         el: $('.section-body'),
 
         initialize: function() {
-            var elem = document.querySelector('#medicinesForm');
 
-            elem.addEventListener('submit', _.bind(this.createMedicine, this));
         },
 
         render: function() {
-            var template = _.template($('#medicine-table').html(), {});
+            var self = this;
 
-            this.$el.html(template);
+            $.get('/assets/templates/medicines/index.tpl.html', function(data) {
+                var template = _.template(data);
 
-            return this;
+                self.$el.html(template);
+                self.triggerMethod('render');
+
+                var elem = document.querySelector('#medicinesForm');
+                elem.addEventListener('submit', _.bind(self.createMedicine, self));
+
+                return self;
+            });
         },
 
         onRender: function() {
