@@ -20,6 +20,8 @@ App.Views.Maintenance.Allergies = (function(App) {
                 var elem = document.querySelector('#allergiesForm');
                 elem.addEventListener('submit', _.bind(self.createAllergy, self));
 
+                App.Helpers.Loader.hide();
+
                 return self;
             });
         },

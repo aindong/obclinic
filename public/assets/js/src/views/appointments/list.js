@@ -25,6 +25,8 @@ App.Views.Appointments = (function(App) {
                     var elem = document.querySelector('#appointmentForm');
                     elem.addEventListener('submit', _.bind(self.createAppointment, self));
 
+                    App.Helpers.Loader.hide();
+
                     return self;
                 });
             });

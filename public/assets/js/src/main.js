@@ -19,13 +19,17 @@
 
 
     // Sidebar/Menubar active/inactive toggle
-    $('#main-menu > li').click(function() {
+    $('#main-menu > li').not('.gui-folder').click(function() {
+        App.Helpers.Loader.show();
+
         $(this).addClass('active')
             .siblings()
                 .removeClass('active');
     });
 
     $('#main-menu li ul li').click(function() {
+        App.Helpers.Loader.show();
+
         var parent = $(this).parent().parent();
         if (!parent.hasClass('active')) {
             parent.addClass('active').siblings().removeClass('active');

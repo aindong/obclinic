@@ -19,13 +19,17 @@
 
 
     // Sidebar/Menubar active/inactive toggle
-    $('#main-menu > li').click(function() {
+    $('#main-menu > li').not('.gui-folder').click(function() {
+        App.Helpers.Loader.show();
+
         $(this).addClass('active')
             .siblings()
                 .removeClass('active');
     });
 
     $('#main-menu li ul li').click(function() {
+        App.Helpers.Loader.show();
+
         var parent = $(this).parent().parent();
         if (!parent.hasClass('active')) {
             parent.addClass('active').siblings().removeClass('active');
@@ -325,6 +329,8 @@ App.Views.Appointments = (function(App) {
                     var elem = document.querySelector('#appointmentForm');
                     elem.addEventListener('submit', _.bind(self.createAppointment, self));
 
+                    App.Helpers.Loader.hide();
+
                     return self;
                 });
             });
@@ -473,6 +479,8 @@ App.Views.Queues = (function(App) {
                     var elem = document.querySelector('#createQueueForm');
                     elem.addEventListener('submit', _.bind(self.createQueue, self));
 
+                    App.Helpers.Loader.hide();
+
                     return self;
                 });
             });
@@ -537,6 +545,8 @@ App.Views.Maintenance.Allergies = (function(App) {
 
                 var elem = document.querySelector('#allergiesForm');
                 elem.addEventListener('submit', _.bind(self.createAllergy, self));
+
+                App.Helpers.Loader.hide();
 
                 return self;
             });
@@ -603,6 +613,8 @@ App.Views.Maintenance.Diseases = (function(App) {
                 var elem = document.querySelector('#diseasesForm');
                 elem.addEventListener('submit', _.bind(self.createDisease, self));
 
+                App.Helpers.Loader.hide();
+
                 return self;
             })
         },
@@ -665,6 +677,8 @@ App.Views.Maintenance.Medicines = (function(App) {
 
                 var elem = document.querySelector('#medicinesForm');
                 elem.addEventListener('submit', _.bind(self.createMedicine, self));
+
+                App.Helpers.Loader.hide();
 
                 return self;
             });
@@ -738,6 +752,8 @@ App.Views.Maintenance.Users = (function(App) {
 
                     var elem = document.querySelector('#usersForm');
                     elem.addEventListener('submit', _.bind(self.createUser, self));
+
+                    App.Helpers.Loader.hide();
 
                     return self;
                 });

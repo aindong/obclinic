@@ -24,6 +24,8 @@ App.Views.Queues = (function(App) {
                     var elem = document.querySelector('#createQueueForm');
                     elem.addEventListener('submit', _.bind(self.createQueue, self));
 
+                    App.Helpers.Loader.hide();
+
                     return self;
                 });
             });

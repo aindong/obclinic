@@ -21,6 +21,8 @@ App.Views.Maintenance.Diseases = (function(App) {
                 var elem = document.querySelector('#diseasesForm');
                 elem.addEventListener('submit', _.bind(self.createDisease, self));
 
+                App.Helpers.Loader.hide();
+
                 return self;
             })
         },

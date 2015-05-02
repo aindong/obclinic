@@ -30,6 +30,8 @@ App.Views.Maintenance.Users = (function(App) {
                     var elem = document.querySelector('#usersForm');
                     elem.addEventListener('submit', _.bind(self.createUser, self));
 
+                    App.Helpers.Loader.hide();
+
                     return self;
                 });
             });

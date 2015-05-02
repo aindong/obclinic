@@ -20,6 +20,8 @@ App.Views.Maintenance.Medicines = (function(App) {
                 var elem = document.querySelector('#medicinesForm');
                 elem.addEventListener('submit', _.bind(self.createMedicine, self));
 
+                App.Helpers.Loader.hide();
+
                 return self;
             });
         },
