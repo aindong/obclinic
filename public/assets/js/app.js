@@ -293,7 +293,7 @@ App.Collections.Patients = (function(App) {
     'use strict';
 
     var Patients = Backbone.Collection.extend({
-        model: App.Models.PatientModel,
+        model: App.Models.Patient,
         url: '/api/v1/patients',
         parse: function(response) {
             return response.data;
@@ -375,69 +375,99 @@ App.Views.Appointments = (function(App) {
         List: List
     }
 }(window.App));
-App.Views.Patients = (function(App) {
-    'use strict';
-
-    var Create = Marionette.View.extend({
-        el: '#createForm',
-
-        events: {
-            'submit': 'createPatient'
-        },
-
-        createPatient: function(e) {
-            e.preventDefault();
-
-            var patient = this.collection.create({
-                patient_no: this.$('#patient_no').val(),
-                firstname: this.$('#firstname').val(),
-                lastname: this.$('#lastname').val(),
-                middlename: this.$('#middlename').val(),
-                address: this.$('#address').val(),
-                birthdate: this.$('#birthdate').val(),
-                contactno: this.$('#contactno').val(),
-                email: this.$('#email').val()
-            }, { wait: true });
-
-            console.log(patient);
-            //this.collection.save();
-        }
-    });
-
-    return {
-        Create: Create
-    }
-}(window.App));
+//App.Views.Patients = (function(App) {
+//    'use strict';
+//
+//    var Create = Marionette.View.extend({
+//        el: '#createForm',
+//
+//        events: {
+//            'submit': 'createPatient'
+//        },
+//
+//        createPatient: function(e) {
+//            e.preventDefault();
+//
+//            var patient = this.collection.create({
+//                patient_no: this.$('#patient_no').val(),
+//                firstname: this.$('#firstname').val(),
+//                lastname: this.$('#lastname').val(),
+//                middlename: this.$('#middlename').val(),
+//                address: this.$('#address').val(),
+//                birthdate: this.$('#birthdate').val(),
+//                contactno: this.$('#contactno').val(),
+//                email: this.$('#email').val()
+//            }, { wait: true });
+//
+//            console.log(patient);
+//            //this.collection.save();
+//        }
+//    });
+//
+//    return {
+//        Create: Create
+//    }
+//}(window.App));
 App.Views.Patients = (function(App) {
     'use strict';
 
         // Instance of the collection
         var patients = new App.Collections.Patients();
 
+        var Create = Marionette.View.extend({
+            el: '#createForm',
+
+            events: {
+                'submit': 'createPatient'
+            },
+
+            createPatient: function(e) {
+                e.preventDefault();
+
+                var patient = this.collection.create({
+                    patient_no: this.$('#patient_no').val(),
+                    firstname: this.$('#firstname').val(),
+                    lastname: this.$('#lastname').val(),
+                    middlename: this.$('#middlename').val(),
+                    address: this.$('#address').val(),
+                    birthdate: this.$('#birthdate').val(),
+                    contactno: this.$('#contactno').val(),
+                    email: this.$('#email').val()
+                }, { wait: true });
+
+                console.log(patient);
+                //this.collection.save();
+            }
+        });
+
         // View
         var List = Marionette.View.extend({
-            el: $('.section-body'),
+            el: $('#content'),
 
             initialize: function() {
                 this.collection.on('sync', this.render, this);
 
-                var patientCreateForm = new App.Views.Patients.Create({ collection: patients });
+                var patientCreateForm = new Create({ collection: patients });
             },
 
             collection: patients,
 
             render: function() {
-                var template = Handlebars.compile($('#patient-place').html());
-                var html = template({ patients: this.collection.toJSON() });
-                this.$el.html(html);
+                var self = this;
 
-                return this;
+                $.get('/assets/templates/patients/index.tpl.html', function(data) {
+                    var template = Handlebars.compile(data);
+                    var html = template({ patients: self.collection.toJSON() });
+                    self.$el.html(html);
+
+                    App.Helpers.Loader.hide();
+                    return self;
+                });
             },
 
             onBeforeRender: function() {
                 var self = this;
                 this.collection.fetch().then(function() {
-                    self.render();
                     self.triggerMethod('render');
                 });
             },
@@ -445,6 +475,7 @@ App.Views.Patients = (function(App) {
             onRender: function() {
                 //console.log(this.collection.toJSON());
                 console.log('rendered');
+                this.render();
             }
         });
 
@@ -524,72 +555,6 @@ App.Views.Queues = (function(App) {
         List: List
     }
 }(window.App));
-App.Views.Maintenance.Diseases = (function(App) {
-    'use strict';
-
-    var List = Marionette.View.extend({
-        el: $('#content'),
-
-        initialize: function() {
-
-        },
-
-        render: function() {
-
-            var self = this;
-
-            $.get('/assets/templates/diseases/index.tpl.html', function(data) {
-                var template = Handlebars.compile(data);
-
-                self.$el.html(template);
-                self.triggerMethod('render');
-
-                var elem = document.querySelector('#diseasesForm');
-                elem.addEventListener('submit', _.bind(self.createDisease, self));
-
-                App.Helpers.Loader.hide();
-
-                return self;
-            })
-        },
-
-        onRender: function() {
-            var $columns = [
-                {
-                    "class": 'details-control',
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": ''
-                },
-                {"data": "id"},
-                {"data": "name"},
-                {"data": "created"},
-                {"data": "updated"},
-                {"data": "actions"}
-            ];
-
-            App.Helpers.Table.initialize($('#datatable2'), $columns);
-        },
-
-        createDisease: function(e) {
-            e.preventDefault();
-
-            var form = $('#diseasesForm');
-            var url = '/api/v1/maintenance/diseases';
-            var messages = {
-                success: 'Successfully added a disease',
-                failed: 'Failed to add a new disease'
-            };
-
-            var $http = App.Helpers.Http;
-            $http.post(this, form, url, messages);
-        }
-    });
-
-    return {
-        List: List
-    }
-}(window.App));
 App.Views.Maintenance.Allergies = (function(App) {
     'use strict';
 
@@ -645,6 +610,72 @@ App.Views.Maintenance.Allergies = (function(App) {
             var messages = {
                 success: 'Successfully created a new allergy',
                 failed: 'Failed to add a new allergy'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
+        }
+    });
+
+    return {
+        List: List
+    }
+}(window.App));
+App.Views.Maintenance.Diseases = (function(App) {
+    'use strict';
+
+    var List = Marionette.View.extend({
+        el: $('#content'),
+
+        initialize: function() {
+
+        },
+
+        render: function() {
+
+            var self = this;
+
+            $.get('/assets/templates/diseases/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                self.$el.html(template);
+                self.triggerMethod('render');
+
+                var elem = document.querySelector('#diseasesForm');
+                elem.addEventListener('submit', _.bind(self.createDisease, self));
+
+                App.Helpers.Loader.hide();
+
+                return self;
+            })
+        },
+
+        onRender: function() {
+            var $columns = [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                {"data": "id"},
+                {"data": "name"},
+                {"data": "created"},
+                {"data": "updated"},
+                {"data": "actions"}
+            ];
+
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
+        },
+
+        createDisease: function(e) {
+            e.preventDefault();
+
+            var form = $('#diseasesForm');
+            var url = '/api/v1/maintenance/diseases';
+            var messages = {
+                success: 'Successfully added a disease',
+                failed: 'Failed to add a new disease'
             };
 
             var $http = App.Helpers.Http;
