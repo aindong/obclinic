@@ -295,12 +295,155 @@ App.Collections.Patients = (function(App) {
     var Patients = Backbone.Collection.extend({
         model: App.Models.Patient,
         url: '/api/v1/patients',
+        pagination: {
+            current_page: 1,
+            total_data: 0,
+            per_page: 0,
+            total_page: 0
+        },
         parse: function(response) {
+            this.pagination.current_page = response.current_page;
+            this.pagination.total_data = response.total;
+            this.pagination.per_page = response.per_page;
+            this.pagination.total_page = response.total / response.per_page;
+
             return response.data;
         }
     });
 
     return Patients;
+}(window.App));
+//App.Views.Patients = (function(App) {
+//    'use strict';
+//
+//    var Create = Marionette.View.extend({
+//        el: '#createForm',
+//
+//        events: {
+//            'submit': 'createPatient'
+//        },
+//
+//        createPatient: function(e) {
+//            e.preventDefault();
+//
+//            var patient = this.collection.create({
+//                patient_no: this.$('#patient_no').val(),
+//                firstname: this.$('#firstname').val(),
+//                lastname: this.$('#lastname').val(),
+//                middlename: this.$('#middlename').val(),
+//                address: this.$('#address').val(),
+//                birthdate: this.$('#birthdate').val(),
+//                contactno: this.$('#contactno').val(),
+//                email: this.$('#email').val()
+//            }, { wait: true });
+//
+//            console.log(patient);
+//            //this.collection.save();
+//        }
+//    });
+//
+//    return {
+//        Create: Create
+//    }
+//}(window.App));
+App.Views.Patients = (function(App) {
+    'use strict';
+
+        // Instance of the collection
+        var patients = new App.Collections.Patients();
+
+        var Create = Marionette.View.extend({
+            el: '#createForm',
+
+            events: {
+                'submit': 'createPatient'
+            },
+
+            createPatient: function(e) {
+                e.preventDefault();
+
+                var patient = this.collection.create({
+                    patient_no: this.$('#patient_no').val(),
+                    firstname: this.$('#firstname').val(),
+                    lastname: this.$('#lastname').val(),
+                    middlename: this.$('#middlename').val(),
+                    address: this.$('#address').val(),
+                    birthdate: this.$('#birthdate').val(),
+                    contactno: this.$('#contactno').val(),
+                    email: this.$('#email').val()
+                }, { wait: true });
+
+                console.log(patient);
+                //this.collection.save();
+            }
+        });
+
+        // View
+        var List = Marionette.View.extend({
+            el: $('#content'),
+
+            initialize: function(options) {
+                if (options.page) {
+                    this.page = options.page;
+                }
+
+                this.collection.on('sync', this.render, this);
+
+                var patientCreateForm = new Create({ collection: patients });
+            },
+
+            collection: patients,
+
+            render: function() {
+                var self = this;
+
+                $.get('/assets/templates/patients/index.tpl.html', function(data) {
+                    var template = Handlebars.compile(data);
+
+                    // Pagination
+                    var pagination = {
+                        pages: [],
+                        current: self.collection.pagination.current_page,
+                        last: self.collection.pagination.total_page
+                    };
+
+                    for (var i = 1; i <= self.collection.pagination.total_page; i++) {
+                        var tmp;
+
+                        tmp = '<li><a href="#patients/' + i + '">' + i +'</a></li>';
+
+                        if (i == self.collection.pagination.current_page) {
+                            tmp = '<li class="active"><a href="#patients/' + i + '">' + i + ' <span class="sr-only">(current)</span></a></li>';
+                        }
+
+                        pagination.pages.push(tmp);
+                    }
+
+                    var html = template({ patients: self.collection.toJSON(), pagination: pagination });
+                    self.$el.html(html);
+
+                    App.Helpers.Loader.hide();
+                    return self;
+                });
+            },
+
+            onBeforeRender: function() {
+                var self = this;
+                this.collection.fetch({data: {page: this.page}}).then(function() {
+                    self.triggerMethod('render');
+                });
+            },
+
+            onRender: function() {
+                //console.log(this.collection.toJSON());
+                console.log('rendered');
+                this.render();
+            }
+        });
+
+        return {
+            List: List
+        };
 }(window.App));
 App.Views.Appointments = (function(App) {
     'use strict';
@@ -374,114 +517,6 @@ App.Views.Appointments = (function(App) {
     return {
         List: List
     }
-}(window.App));
-//App.Views.Patients = (function(App) {
-//    'use strict';
-//
-//    var Create = Marionette.View.extend({
-//        el: '#createForm',
-//
-//        events: {
-//            'submit': 'createPatient'
-//        },
-//
-//        createPatient: function(e) {
-//            e.preventDefault();
-//
-//            var patient = this.collection.create({
-//                patient_no: this.$('#patient_no').val(),
-//                firstname: this.$('#firstname').val(),
-//                lastname: this.$('#lastname').val(),
-//                middlename: this.$('#middlename').val(),
-//                address: this.$('#address').val(),
-//                birthdate: this.$('#birthdate').val(),
-//                contactno: this.$('#contactno').val(),
-//                email: this.$('#email').val()
-//            }, { wait: true });
-//
-//            console.log(patient);
-//            //this.collection.save();
-//        }
-//    });
-//
-//    return {
-//        Create: Create
-//    }
-//}(window.App));
-App.Views.Patients = (function(App) {
-    'use strict';
-
-        // Instance of the collection
-        var patients = new App.Collections.Patients();
-
-        var Create = Marionette.View.extend({
-            el: '#createForm',
-
-            events: {
-                'submit': 'createPatient'
-            },
-
-            createPatient: function(e) {
-                e.preventDefault();
-
-                var patient = this.collection.create({
-                    patient_no: this.$('#patient_no').val(),
-                    firstname: this.$('#firstname').val(),
-                    lastname: this.$('#lastname').val(),
-                    middlename: this.$('#middlename').val(),
-                    address: this.$('#address').val(),
-                    birthdate: this.$('#birthdate').val(),
-                    contactno: this.$('#contactno').val(),
-                    email: this.$('#email').val()
-                }, { wait: true });
-
-                console.log(patient);
-                //this.collection.save();
-            }
-        });
-
-        // View
-        var List = Marionette.View.extend({
-            el: $('#content'),
-
-            initialize: function() {
-                this.collection.on('sync', this.render, this);
-
-                var patientCreateForm = new Create({ collection: patients });
-            },
-
-            collection: patients,
-
-            render: function() {
-                var self = this;
-
-                $.get('/assets/templates/patients/index.tpl.html', function(data) {
-                    var template = Handlebars.compile(data);
-                    var html = template({ patients: self.collection.toJSON() });
-                    self.$el.html(html);
-
-                    App.Helpers.Loader.hide();
-                    return self;
-                });
-            },
-
-            onBeforeRender: function() {
-                var self = this;
-                this.collection.fetch().then(function() {
-                    self.triggerMethod('render');
-                });
-            },
-
-            onRender: function() {
-                //console.log(this.collection.toJSON());
-                console.log('rendered');
-                this.render();
-            }
-        });
-
-        return {
-            List: List
-        };
 }(window.App));
 
 App.Views.Queues = (function(App) {
@@ -841,6 +876,7 @@ App.Views.Maintenance.Users = (function(App) {
             'maintenance/users': 'showUsers',
             'appointments': 'showAppointments',
             'patients': 'showPatients',
+            'patients/:page': 'showPatientsPage',
             'maintenance/allergies': 'showAllergies',
             'maintenance/diseases': 'showDiseases',
             'maintenance/medicines': 'showMedicines',
@@ -870,6 +906,11 @@ App.Views.Maintenance.Users = (function(App) {
 
         showPatients: function() {
             var patientListView = new App.Views.Patients.List;
+            patientListView.triggerMethod('before:render');
+        },
+
+        showPatientsPage: function(page) {
+            var patientListView = new App.Views.Patients.List({page: page});
             patientListView.triggerMethod('before:render');
         },
 

@@ -34,7 +34,11 @@ App.Views.Patients = (function(App) {
         var List = Marionette.View.extend({
             el: $('#content'),
 
-            initialize: function() {
+            initialize: function(options) {
+                if (options.page) {
+                    this.page = options.page;
+                }
+
                 this.collection.on('sync', this.render, this);
 
                 var patientCreateForm = new Create({ collection: patients });
@@ -47,7 +51,27 @@ App.Views.Patients = (function(App) {
 
                 $.get('/assets/templates/patients/index.tpl.html', function(data) {
                     var template = Handlebars.compile(data);
-                    var html = template({ patients: self.collection.toJSON() });
+
+                    // Pagination
+                    var pagination = {
+                        pages: [],
+                        current: self.collection.pagination.current_page,
+                        last: self.collection.pagination.total_page
+                    };
+
+                    for (var i = 1; i <= self.collection.pagination.total_page; i++) {
+                        var tmp;
+
+                        tmp = '<li><a href="#patients/' + i + '">' + i +'</a></li>';
+
+                        if (i == self.collection.pagination.current_page) {
+                            tmp = '<li class="active"><a href="#patients/' + i + '">' + i + ' <span class="sr-only">(current)</span></a></li>';
+                        }
+
+                        pagination.pages.push(tmp);
+                    }
+
+                    var html = template({ patients: self.collection.toJSON(), pagination: pagination });
                     self.$el.html(html);
 
                     App.Helpers.Loader.hide();
@@ -57,7 +81,7 @@ App.Views.Patients = (function(App) {
 
             onBeforeRender: function() {
                 var self = this;
-                this.collection.fetch().then(function() {
+                this.collection.fetch({data: {page: this.page}}).then(function() {
                     self.triggerMethod('render');
                 });
             },
