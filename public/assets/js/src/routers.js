@@ -8,6 +8,7 @@
             'maintenance/users': 'showUsers',
             'appointments': 'showAppointments',
             'patients': 'showPatients',
+            'patients/:id/details': 'patientDetails',
             'patients/:page': 'showPatientsPage',
             'maintenance/allergies': 'showAllergies',
             'maintenance/diseases': 'showDiseases',
@@ -39,6 +40,11 @@
         showPatients: function() {
             var patientListView = new App.Views.Patients.List;
             patientListView.triggerMethod('before:render');
+        },
+
+        patientDetails: function(id) {
+            var patientDetail = new App.Views.Patients.Show({patient_no: id});
+            patientDetail.triggerMethod('before:render');
         },
 
         showPatientsPage: function(page) {

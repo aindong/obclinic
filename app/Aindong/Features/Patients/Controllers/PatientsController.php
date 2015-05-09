@@ -22,4 +22,9 @@ class PatientsController extends \BaseController {
     {
         return \View::make('patients.index');
     }
+
+    public function show($patient_no)
+    {
+        return \View::make('patients.show');
+    }
 }

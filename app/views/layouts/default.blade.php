@@ -24,6 +24,7 @@
     <link type="text/css" rel="stylesheet" href="/assets/css/modules/materialadmin/css/theme-default/libs/select2/select201ef.css" />
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-5/libs/toastr/toastrf6d7.css') }}
     {{ HTML::style('/assets/css/modules/materialadmin/css/theme-default/libs/dropzone/dropzone-theme23ba.css') }}
+    {{ HTML::style('/assets/css/custom.css') }}
     <style>
         .hide {
             display: none;

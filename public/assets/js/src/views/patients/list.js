@@ -93,7 +93,44 @@ App.Views.Patients = (function(App) {
             }
         });
 
+        // Sigle page, details of a patient
+        var Show = Marionette.View.extend({
+            el: $('#content'),
+
+            patient_no: null,
+
+            initialize: function(options) {
+                if (options.patient_no) {
+                    this.patient_no = options.patient_no;
+                }
+            },
+
+            render: function() {
+                var self = this;
+
+                $.get('/assets/templates/patients/show.tpl.html', function(data) {
+                    var template = Handlebars.compile(data);
+
+                    var html = template({});
+                    self.$el.html(html);
+
+                    App.Helpers.Loader.hide();
+                });
+            },
+
+            onBeforeRender: function() {
+
+                this.render();
+            },
+
+            onRender: function() {
+
+            }
+
+        });
+
         return {
-            List: List
+            List: List,
+            Show: Show
         };
 }(window.App));

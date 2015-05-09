@@ -313,6 +313,79 @@ App.Collections.Patients = (function(App) {
 
     return Patients;
 }(window.App));
+App.Views.Appointments = (function(App) {
+    'use strict';
+
+    var List = Marionette.View.extend({
+        el: $('#content'),
+
+        initialize: function() {
+
+        },
+
+        render: function() {
+
+            var self = this;
+
+            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
+                var template = Handlebars.compile(data);
+
+                $.get('/api/v1/patients?q=all', function(res) {
+                    self.$el.html(template({data: res}));
+
+                    self.triggerMethod('render');
+
+                    $('select').select2();
+
+                    var elem = document.querySelector('#appointmentForm');
+                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
+
+                    App.Helpers.Loader.hide();
+
+                    return self;
+                });
+            });
+        },
+
+        onRender: function() {
+            var $columns = [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": ''
+                },
+                {"data": "id"},
+                {"data": "patient_no"},
+                {"data": "name"},
+                {"data": "appointment_date"},
+                {"data": "status"},
+                {"data": "created_by"},
+                {"data": "actions"}
+            ];
+
+            App.Helpers.Table.initialize($('#datatable2'), $columns);
+        },
+
+        createAppointment: function(e) {
+            e.preventDefault();
+
+            var form = $('#appointmentForm');
+            var url = '/api/v1/appointments';
+            var messages = {
+                success: 'Successfully created a new appointment',
+                failed: 'Failed to add a new appointment'
+            };
+
+            var $http = App.Helpers.Http;
+            $http.post(this, form, url, messages);
+        }
+    });
+
+    return {
+        List: List
+    }
+}(window.App));
 //App.Views.Patients = (function(App) {
 //    'use strict';
 //
@@ -441,82 +514,46 @@ App.Views.Patients = (function(App) {
             }
         });
 
-        return {
-            List: List
-        };
-}(window.App));
-App.Views.Appointments = (function(App) {
-    'use strict';
+        // Sigle page, details of a patient
+        var Show = Marionette.View.extend({
+            el: $('#content'),
 
-    var List = Marionette.View.extend({
-        el: $('#content'),
+            patient_no: null,
 
-        initialize: function() {
+            initialize: function(options) {
+                if (options.patient_no) {
+                    this.patient_no = options.patient_no;
+                }
+            },
 
-        },
+            render: function() {
+                var self = this;
 
-        render: function() {
+                $.get('/assets/templates/patients/show.tpl.html', function(data) {
+                    var template = Handlebars.compile(data);
 
-            var self = this;
-
-            $.get('/assets/templates/appointments/index.tpl.html', function(data) {
-                var template = Handlebars.compile(data);
-
-                $.get('/api/v1/patients?q=all', function(res) {
-                    self.$el.html(template({data: res}));
-
-                    self.triggerMethod('render');
-
-                    $('select').select2();
-
-                    var elem = document.querySelector('#appointmentForm');
-                    elem.addEventListener('submit', _.bind(self.createAppointment, self));
+                    var html = template({});
+                    self.$el.html(html);
 
                     App.Helpers.Loader.hide();
-
-                    return self;
                 });
-            });
-        },
+            },
 
-        onRender: function() {
-            var $columns = [
-                {
-                    "class": 'details-control',
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": ''
-                },
-                {"data": "id"},
-                {"data": "patient_no"},
-                {"data": "name"},
-                {"data": "appointment_date"},
-                {"data": "status"},
-                {"data": "created_by"},
-                {"data": "actions"}
-            ];
+            onBeforeRender: function() {
 
-            App.Helpers.Table.initialize($('#datatable2'), $columns);
-        },
+                this.render();
+            },
 
-        createAppointment: function(e) {
-            e.preventDefault();
+            onRender: function() {
 
-            var form = $('#appointmentForm');
-            var url = '/api/v1/appointments';
-            var messages = {
-                success: 'Successfully created a new appointment',
-                failed: 'Failed to add a new appointment'
-            };
+            }
 
-            var $http = App.Helpers.Http;
-            $http.post(this, form, url, messages);
-        }
-    });
+        });
 
-    return {
-        List: List
-    }
+        return {
+            List: List,
+            Show: Show
+        };
 }(window.App));
 
 App.Views.Queues = (function(App) {
@@ -876,6 +913,7 @@ App.Views.Maintenance.Users = (function(App) {
             'maintenance/users': 'showUsers',
             'appointments': 'showAppointments',
             'patients': 'showPatients',
+            'patients/:id/details': 'patientDetails',
             'patients/:page': 'showPatientsPage',
             'maintenance/allergies': 'showAllergies',
             'maintenance/diseases': 'showDiseases',
@@ -907,6 +945,11 @@ App.Views.Maintenance.Users = (function(App) {
         showPatients: function() {
             var patientListView = new App.Views.Patients.List;
             patientListView.triggerMethod('before:render');
+        },
+
+        patientDetails: function(id) {
+            var patientDetail = new App.Views.Patients.Show({patient_no: id});
+            patientDetail.triggerMethod('before:render');
         },
 
         showPatientsPage: function(page) {

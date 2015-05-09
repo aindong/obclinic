@@ -1,5 +1,5 @@
 /**
- * Created by papabear on 4/27/2015.
+ * Created by aindong on 4/27/2015.
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
@@ -10,6 +10,7 @@ var gulp        = require('gulp'),
 
 
 /* TASKS */
+// -------- JS -------------
 gulp.task('js', function () {
     return gulp.src(['public/assets/js/src/main.js', 'public/assets/js/src/helpers/*',
         'public/assets/js/src/models/*', 'public/assets/js/src/collections/*',
@@ -21,14 +22,16 @@ gulp.task('js', function () {
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest('public/assets/js/'));
 });
-//
-//gulp.task('css', function () {
-//    return gulp.src(['firstproject/style/style.css'])
-//        .pipe(minify())
-//        .pipe(rename('style.min.css'))
-//        .pipe(gulp.dest('firstproject/style'));
-//});
 
+// -------- CSS -------------
+gulp.task('css', function () {
+    return gulp.src(['firstproject/style/style.css'])
+        .pipe(minify())
+        .pipe(rename('style.min.css'))
+        .pipe(gulp.dest('firstproject/style'));
+});
+
+// -------- WATCHER -------------
 gulp.task('watch', function() {
     gulp.watch(['public/assets/js/src/main.js', 'public/assets/js/src/helpers/*',
         'public/assets/js/src/models/*', 'public/assets/js/src/collections/*',
@@ -36,4 +39,4 @@ gulp.task('watch', function() {
         'public/assets/js/src/routers.js'], ['js']);
 });
 
-gulp.task('default', ['js', 'watch']);
+gulp.task('default', ['js', 'css', 'watch']);

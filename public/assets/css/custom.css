@@ -1,0 +1,12 @@
+p.info {
+    line-height: 0.4em;
+}
+
+.title a {
+    cursor: hand;
+}
+
+.height-6 {
+    height: 250px;
+    overflow: scroll;
+}
