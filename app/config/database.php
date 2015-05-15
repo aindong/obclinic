@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'obclinic',
 			'username'  => 'root',
-			'password'  => 'molecules',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
