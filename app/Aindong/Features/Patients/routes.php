@@ -15,4 +15,6 @@ Route::group(['namespace' => 'Aindong\Features\Patients\Controllers\Api', 'prefi
     Route::get('/patients', 'PatientsController@index');
     Route::post('/patients', 'PatientsController@store');
     Route::get('/patients/{patient_no}', 'PatientsController@show');
+
+    Route::resource('patientallergies', 'PatientsAllergiesController');
 });
