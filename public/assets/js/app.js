@@ -36,6 +36,10 @@
         }
     });
 
+    $('#main-menu a').on('click', function(e) {
+        Backbone.history.loadUrl(Backbone.history.fragment);
+    });
+
     window.App =  {
         Helpers: {},
         Models: {},
