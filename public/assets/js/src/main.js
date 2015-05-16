@@ -40,6 +40,15 @@
         Backbone.history.loadUrl(Backbone.history.fragment);
     });
 
+    Handlebars.registerHelper('years', function(block) {
+        var accum = '';
+        var today = new Date();
+
+        for(var i = 1950; i <= today.getFullYear(); ++i)
+            accum += block.fn(i);
+        return accum;
+    });
+
     window.App =  {
         Helpers: {},
         Models: {},

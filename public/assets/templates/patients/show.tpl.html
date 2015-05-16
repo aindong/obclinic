@@ -76,7 +76,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addAllergyModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -102,7 +102,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addPastMedicalHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -128,7 +128,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addPastSurgicalHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -157,7 +157,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addCurrentMedicationModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -183,7 +183,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addSocialHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -209,7 +209,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addFamilyHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -238,7 +238,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addObstetricsHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -264,7 +264,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addGynecologyHistoryModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -290,7 +290,7 @@
                                 </header>
                                 <div class="tools">
                                     <div class="btn-group">
-                                        <button type="button" class="btn ink-reaction btn-floating-action btn-primary">
+                                        <button type="button" data-toggle="modal" data-target="#addNotesModal" class="btn ink-reaction btn-floating-action btn-primary">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
@@ -312,3 +312,536 @@
         </div>
     </div>
 </section>
+
+
+<!-- MODAL FORMS BEGIN -->
+
+<!-- BEGIND: ALLERGY MODAL -->
+<div class="modal fade" id="addAllergyModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel1">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createAllergyForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="allergies" class="control-label">Allergies</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="allergies" id="allergies" multiple="multiple">
+                                <option value="test">test</option>
+                                <option value="test2">test2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: ALLERGY MODAL -->
+
+<!-- BEGIND: PAST MEDICAL HISTORY MODAL -->
+<div class="modal fade" id="addPastMedicalHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel2">Add Past Medical History</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createPastMedicalHistoryForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="disease" class="control-label">Disease</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="disease_id" id="disease">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="diagnosed" class="control-label">Year Diagnosed</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="diagnosed" class="form-control">
+                                {{#years}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/years}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: PAST MEDICAL HISTORY MODAL -->
+
+<!-- BEGIND: PAST SURGICAL HISTORY MODAL -->
+<div class="modal fade" id="addPastSurgicalHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: Past Surgical History MODAL -->
+
+<!-- BEGIND: CURRENT MEDICATION MODAL -->
+<div class="modal fade" id="addCurrentMedicationModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: CURRENT MEDICATION MODAL -->
+
+<!-- BEGIND: SOCIAL HISTORY MODAL -->
+<div class="modal fade" id="addSocialHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: SOCIAL HISTORY MODAL -->
+
+<!-- BEGIND: FAMILY HISTORY MODAL -->
+<div class="modal fade" id="addFamilyHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: FAMILY HISTORY MODAL -->
+
+<!-- BEGIND: OBSTETRICS HISTORY MODAL -->
+<div class="modal fade" id="addObstetricsHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: OBSTETRICS HISTORY MODAL -->
+
+<!-- BEGIND: GYNECOLOGY HISTORY MODAL -->
+<div class="modal fade" id="addGynecologyHistoryModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: GYNECOLOGY HISTORY MODAL -->
+
+<!-- BEGIND: NOTES MODAL -->
+<div class="modal fade" id="addNotesModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+            </div>
+            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="patient_no" class="control-label">Patient No</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="patient_no" id="patient_no">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Reservation Type</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                                <option value="OVER THE PHONE">OVER THE PHONE</option>
+                                <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" id="getvital"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="getvital" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btnSubmit btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Submitting...">Submit</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END: NOTES MODAL -->
+
+<!-- MODAL FORMS END -->

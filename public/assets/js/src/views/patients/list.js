@@ -114,6 +114,8 @@ App.Views.Patients = (function(App) {
                     var html = template({});
                     self.$el.html(html);
 
+                    $('select').select2();
+
                     App.Helpers.Loader.hide();
                 });
             },
