@@ -10,3 +10,7 @@ p.info {
     height: 250px;
     overflow: scroll;
 }
+
+.min-height-250 {
+    min-height: 250px;
+}

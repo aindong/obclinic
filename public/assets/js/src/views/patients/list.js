@@ -116,20 +116,81 @@ App.Views.Patients = (function(App) {
 
                     $('select').select2();
 
+                    self.triggerMethod('render');
                     App.Helpers.Loader.hide();
                 });
             },
 
             onBeforeRender: function() {
-
                 this.render();
             },
 
             onRender: function() {
-
+                $('#createAllergyForm').on('submit', createAllergyPatient);
+                $('#createPastMedicalHistoryForm').on('submit', createPastMedicalHistory);
+                $('#createCurrentMedicationForm').on('submit', createCurrentMedicationForm);
+                $('#createSocialHistoryForm').on('submit', createSocialHistoryForm);
+                $('#createFamilyHistoryForm').on('submit', createFamilyHistoryForm);
             }
 
         });
+
+        var createAllergyPatient = function(e) {
+            e.preventDefault();
+
+            var allergyList = $('#allergyList');
+            var allergy = $('#allergies');
+
+            var item = '<li>' + allergy.val() + '</li>';
+
+            allergyList.append(item);
+        };
+
+        var createPastMedicalHistory = function(e) {
+            e.preventDefault();
+
+            var pastMedicalHistoryList = $('#pastMedicalHistoryList');
+            var disease     = $('#disease');
+            var diagnosed   = $('#diagnosed');
+
+            var item = '<li>' + disease.val() + ' - ' + diagnosed.val() + '</li>'
+
+            pastMedicalHistoryList.append(item);
+        };
+
+        var createCurrentMedicationForm = function(e) {
+            e.preventDefault();
+
+            var currentMedicationList = $('#currentMedicationList');
+            var medicine    = $('#medicine');
+            var dosage      = $('#dosage');
+            var frequency   = $('#frequency');
+
+            var item = '<li>' + medicine + ' ' + dosage + ' ' + frequency + '</li>';
+
+            currentMedicationList.append(item);
+        };
+
+        var createSocialHistoryForm = function(e) {
+            e.preventDefault();
+
+            var socialHistoryList = $('#socialHistoryList');
+
+            var item = '';
+
+            socialHistoryList.append(item);
+        };
+
+        var createFamilyHistoryForm = function(e) {
+            e.preventDefault();
+
+            var familyHistoryList = $('#familyHistoryList');
+
+            var item = '';
+
+            familyHistoryList.append(item);
+        };
+
 
         return {
             List: List,

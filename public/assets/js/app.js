@@ -550,20 +550,53 @@ App.Views.Patients = (function(App) {
 
                     $('select').select2();
 
+                    self.triggerMethod('render');
                     App.Helpers.Loader.hide();
                 });
             },
 
             onBeforeRender: function() {
-
                 this.render();
             },
 
             onRender: function() {
-
+                $('#createAllergyForm').on('submit', createAllergyPatient);
+                $('#createPastMedicalHistoryForm').on('submit', createPastMedicalHistory);
+                $('#createCurrentMedicationForm').on('submit', createCurrentMedicationForm);
             }
 
         });
+
+        var createAllergyPatient = function(e) {
+            e.preventDefault();
+
+            var allergyList = $('#allergyList');
+            var allergy = $('#allergies');
+
+            var item = '<li>' + allergy.val() + '</li>';
+
+            allergyList.append(item);
+        };
+
+        var createPastMedicalHistory = function(e) {
+            e.preventDefault();
+
+            var pastMedicalHistoryList = $('#pastMedicalHistoryList');
+            var disease     = $('#disease');
+            var diagnosed   = $('#diagnosed');
+
+            var item = '<li>' + disease.val() + ' - ' + diagnosed.val() + '</li>'
+
+            pastMedicalHistoryList.append(item);
+        };
+
+        var createCurrentMedicationForm = function(e) {
+            e.preventDefault();
+
+            var currentMedicationList = $('#currentMedicationList')l;
+        }
+
+
 
         return {
             List: List,
