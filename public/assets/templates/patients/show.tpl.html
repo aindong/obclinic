@@ -331,7 +331,7 @@
                             <label for="allergies" class="control-label">Allergies</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="allergies" id="allergies" multiple="multiple">
+                            <select name="allergies" id="allergies">
                                 <option value="test">test</option>
                                 <option value="test2">test2</option>
                             </select>
@@ -466,16 +466,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+                <h4 class="modal-title" id="formModalLabel4">Add Current Medication</h4>
             </div>
-            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+            <form class="form-horizontal" role="form" id="createCurrentMedicationForm" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="patient_no" class="control-label">Patient No</label>
+                            <label for="medicine" class="control-label">Medicine</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="patient_no" id="patient_no">
+                            <select name="medicine" id="medicine">
                                 {{#each data}}
                                 <option value="{{patient_no}}">
                                     {{firstname}} {{middlename}} {{lastname}}
@@ -487,30 +487,19 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="email" class="control-label">Reservation Type</label>
+                            <label for="dosage" class="control-label">Dosage</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
-                                <option value="OVER THE PHONE">OVER THE PHONE</option>
-                                <option value="WALK-IN">WALK-IN</option>
-                            </select>
+                            <input type="text" id="dosage" name="dosage" class="form-control" placeholder="Dosage"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                            <label for="frequency" class="control-label">Frequency</label>
                         </div>
                         <div class="col-sm-9">
-                            <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" id="getvital"/>
-                                <span>Yes</span>
-                            </label>
-
-                            <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" checked/>
-                                <span>No</span>
-                            </label>
+                            <input type="text" class="form-control" id="frequency" name="frequency" placeholder="Frequency"/>
                         </div>
                     </div>
                 </div>
@@ -530,16 +519,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+                <h4 class="modal-title" id="formModalLabel5">Add Social History</h4>
             </div>
-            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+            <form class="form-horizontal" role="form" id="createSocialHistory" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="patient_no" class="control-label">Patient No</label>
+                            <label for="marital_status" class="control-label">Marital Status</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="patient_no" id="patient_no">
+                            <select name="marital_status" id="marital_status">
                                 {{#each data}}
                                 <option value="{{patient_no}}">
                                     {{firstname}} {{middlename}} {{lastname}}
@@ -551,10 +540,10 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="email" class="control-label">Reservation Type</label>
+                            <label for="exercise" class="control-label">Exercise</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
+                            <select name="exercise" id="exercise" class="form-control" >
                                 <option value="OVER THE PHONE">OVER THE PHONE</option>
                                 <option value="WALK-IN">WALK-IN</option>
                             </select>
@@ -563,16 +552,46 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="getvital" class="control-label">Get Vital Signs</label>
+                            <label for="exercise_frequency" class="control-label">Exercise Frequency</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="exercise_frequency" id="exercise_frequency" class="form-control" >
+                            <option value="OVER THE PHONE">OVER THE PHONE</option>
+                            <option value="WALK-IN">WALK-IN</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label">Smokes</label>
                         </div>
                         <div class="col-sm-9">
                             <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" id="getvital"/>
+                                <input type="radio" name="smokes"/>
                                 <span>Yes</span>
                             </label>
 
                             <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" checked/>
+                                <input type="radio" name="smokes" checked/>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label">Alcohol</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="alcohol"/>
+                                <span>Yes</span>
+                            </label>
+
+                            <label class="radio-inline radio-styled">
+                                <input type="radio" name="alcohol" checked/>
                                 <span>No</span>
                             </label>
                         </div>
@@ -594,16 +613,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="formModalLabel">Add Allery for patient</h4>
+                <h4 class="modal-title" id="formModalLabel6">Add Family History</h4>
             </div>
-            <form class="form-horizontal" role="form" id="createQueueForm" method="post">
+            <form class="form-horizontal" role="form" id="createFamilyHistoryForm" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="patient_no" class="control-label">Patient No</label>
+                            <label for="family_member" class="control-label">Family Member</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="patient_no" id="patient_no">
+                            <select name="family_member" id="family_member">
                                 {{#each data}}
                                 <option value="{{patient_no}}">
                                     {{firstname}} {{middlename}} {{lastname}}
@@ -615,30 +634,16 @@
 
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="email" class="control-label">Reservation Type</label>
+                            <label for="hereditary_condition" class="control-label">Hereditary Condition</label>
                         </div>
                         <div class="col-sm-9">
-                            <select name="reservation_type" id="email" class="form-control" placeholder="Reservation Type" >
-                                <option value="OVER THE PHONE">OVER THE PHONE</option>
-                                <option value="WALK-IN">WALK-IN</option>
+                            <select name="hereditary_condition" id="hereditary_condition">
+                                {{#each data}}
+                                <option value="{{patient_no}}">
+                                    {{firstname}} {{middlename}} {{lastname}}
+                                </option>
+                                {{/each}}
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="getvital" class="control-label">Get Vital Signs</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" id="getvital"/>
-                                <span>Yes</span>
-                            </label>
-
-                            <label class="radio-inline radio-styled">
-                                <input type="radio" name="getvital" checked/>
-                                <span>No</span>
-                            </label>
                         </div>
                     </div>
                 </div>
